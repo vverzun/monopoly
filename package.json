@@ -1,0 +1,38 @@
+{
+  "name": "monopoly",
+  "version": "1.0.0",
+  "description": "Monopoly",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all -p server client",
+    "client": "webpack-dev-server --mode development --open --hot",
+    "server": "nodemon src/server/server.mjs"
+  },
+  "author": "Vladyslav Verzun",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "ws": "^7.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "3.3.4",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
