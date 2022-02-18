@@ -2,7 +2,7 @@ import http from 'http';
 import WebSocket from 'ws';
 import Game from '../lib/Game.mjs';
 import config from './config.mjs';
-import events from './events.mjs';
+import events from '../helpers/events.mjs';
 import uuid from 'uuid';
 
 const server = http.createServer();
@@ -10,10 +10,19 @@ const wss = new WebSocket.Server({server});
 
 const game = Game.create();
 
-const broadcast = message => {
+const broadcast = () => {
+    const response = {};
+
+    response.type = events.UPDATE;
+    response.gameData = game.gameData;
+    
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(message));
+            const player = game.find('players', client.id);
+            response.playerData = (player) ? player.playerData : {};
+            console.log(response);   
+            
+            client.send(JSON.stringify(response));
         }
     });
 };
@@ -22,40 +31,26 @@ wss.on('connection', ws => {
     ws.id = uuid.v4();
     ws.isAlive = true;
 
-    ws.on('message', message => {
-        message = JSON.parse(message);                                                                 
-        
-        switch(message.type) {
-            case events.PLAYER_ADD: {
-                game.addNewPlayer(ws, message.playerData);
-                
-                message.type = events.PLAYER_UPDATE;
-                message.playerData.isLoggedIn = true;
-                message.playerData.isReady = false;
-                
-                game.updatePlayerData(ws.id, message.playerData); 
-                ws.send(JSON.stringify(message));
+    ws.on('message', request => {
+        request = JSON.parse(request);                                                                 
 
-                message.type = events.GAME_UPDATE;
-                message.gameData.players = game.playersSize;
-                message.gameData.readyPlayers = game.countReadyPlayers();
-                broadcast(message);                                                
+        switch(request.type) {
+            case events.PLAYER_ADD: {
+                game.addPlayer(ws, request.data);
+
+                broadcast();
             }; break;
 
             case events.PLAYER_READY: {
-                message.playerData.isReady = !message.playerData.isReady;
-                game.updatePlayerData(ws.id, message.playerData);
+                game.togglePlayerStatus(ws.id);
+            
+                broadcast();
+            }; break;
 
-                message.type = events.PLAYER_UPDATE;
-                ws.send(JSON.stringify(message));
-                
-                message.type = events.GAME_UPDATE;
-                message.gameData.readyPlayers = game.countReadyPlayers();
-                if (message.gameData.readyPlayers === message.gameData.players) {
-                    game.status = true;
-                    message.gameData.isGameStarted = true;
-                }
-                broadcast(message);
+            case events.PLAYER_PASS_TURN: {
+                game.passPlayerTurn();
+
+                broadcast();
             }; break;
 
             case events.PONG: ws.isAlive = true; break;
@@ -67,14 +62,7 @@ wss.on('connection', ws => {
     ws.on('close', () => {
         game.removePlayer(ws.id);
 
-        const message = {
-            type: events.GAME_UPDATE,
-            gameData: {}
-        }
-
-        message.gameData.readyPlayers = game.countReadyPlayers();
-        message.gameData.players = game.playersSize;
-        broadcast(message);
+        broadcast();
     });
 });
 

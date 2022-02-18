@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import Button from '../atoms/Button';
 import Text from '../atoms/Text'; 
 
-const ReadyCheck = ({isReady, readyPlayers, players, handleClick}) => { 
+const ReadyCheck = ({isReady, readyPlayers, playersCount, handleCheckClick}) => { 
     return (
         <div>
             <Text
-                text={`Ready players: ${readyPlayers}/${players}`}
+                text={`Ready players: ${readyPlayers}/${playersCount}`}
             />
             <Button
                 text={isReady ? 'Cancel' : 'Ready'}
-                handleClick={handleClick}
+                isDisabled={true}
+                handleClick={handleCheckClick}
             />
         </div>
     );
@@ -20,8 +21,8 @@ const ReadyCheck = ({isReady, readyPlayers, players, handleClick}) => {
 ReadyCheck.propTypes = {
     isReady: PropTypes.bool.isRequired,
     readyPlayers: PropTypes.number,
-    players: PropTypes.number,
-    handleClick: PropTypes.func.isRequired
+    playersCount: PropTypes.number,
+    handleCheckClick: PropTypes.func.isRequired
 };
 
 export default ReadyCheck;

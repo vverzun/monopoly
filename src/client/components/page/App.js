@@ -1,39 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import AuthForm from '../organisms/AuthForm';
-import PlayerInterface from '../organisms/PlayerInterface';
-import events from '../../../server/events.mjs';
+import PlayerView from '../organisms/PlayerView';
+import events from '../../../helpers/events.mjs';
+import helpers from '../../../helpers/helpers.mjs';
 
 const ws = new WebSocket('ws://localhost:3030');
 let pingTimeout;
 
-const addNewPlayer = (name, gameData) => {
-    const message = { 
-        playerData: {
-            name: name
-        },
-        gameData
-    };
-
-    message.type = events.PLAYER_ADD,
-    ws.send(JSON.stringify(message));
-};
-
-const setPlayerStatus = (playerData, gameData) => {
-    const message = {
-        playerData, gameData
-    };
-    
-    message.type = events.PLAYER_READY;
-    ws.send(JSON.stringify(message));
-};
-
 const heartbeat = () => {
     clearTimeout(pingTimeout);
     
-    const message = {};
+    const request = {
+        type: events.PONG
+    };
 
-    message.type = events.PONG;
-    ws.send(JSON.stringify(message));
+    ws.send(JSON.stringify(request));
     
     pingTimeout = setTimeout(() => {
         ws.close();
@@ -41,36 +22,35 @@ const heartbeat = () => {
 };
 
 const App = () => {
-    const [playerData, handleUpdatePlayer] = useState({});
-    const [gameData, handleUpdateGame] = useState({});
+    const [data, update] = useState({playerData: {}, gameData: {}});
     const [name, handleChange] = useState('');
     
     useEffect(() => {
         ws.onopen = () => heartbeat();
-        ws.onmessage = message => {
-            message = JSON.parse(message.data);
+        ws.onmessage = response => {
+            response = JSON.parse(response.data);
             
-            switch(message.type) {
-                case events.PLAYER_UPDATE: handleUpdatePlayer(message.playerData); break;
-                case events.GAME_UPDATE: handleUpdateGame(message.gameData); break;
+            switch(response.type) {
+                case events.UPDATE: update(response); break;
                 case events.PING: heartbeat(); break;
             };
         };
         ws.onclose = () => clearTimeout(pingTimeout);
-    }, [playerData, gameData]);
+    }, [data]);
 
     return (
         <div>
-            {playerData.isLoggedIn
+            {data.playerData.isLoggedIn
                 ? 
-                <PlayerInterface
-                    {...playerData}
-                    {...gameData}
-                    handleClick={() => setPlayerStatus(playerData, gameData)}
+                <PlayerView
+                    {...data.playerData} ////REBUILD HERE PROP ACCESS
+                    {...data.gameData}
+                    handleCheckClick={() => helpers.changePlayerStatus(ws)}
+                    handleTurnClick={() => helpers.passPlayerTurn(ws)}
                 />    
                 :
                 <AuthForm
-                    handleSubmit={() => addNewPlayer(name, gameData)}
+                    handleSubmit={() => helpers.addPlayer(name, ws)}
                     handleChange={event => handleChange(event.target.value)}
                 />
             }

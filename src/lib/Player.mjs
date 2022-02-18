@@ -1,19 +1,32 @@
 class Player {
-    constructor(id, data) {
+    constructor(id, playerName) {
         this.id = id;
-        this.playerData = data;
+        this.playerName = playerName;
+
+        this.isLoggedIn = true;
+        this.isReady = false;
+        this.isPlayerTurn = false;
     };
 
-    static create(id, data) {
-        return new Player(id, data);
+    static create(id, playerName) {
+        return new Player(id, playerName);
     };
 
-    set update(data) {
-        this.playerData = data;
+    get playerData() {
+        return {
+            playerName: this.playerName,
+            isLoggedIn: this.isLoggedIn,
+            isReady: this.isReady,
+            isPlayerTurn: this.isPlayerTurn
+        };
     };
 
-    get info() {
-        return this.playerData;
+    changeTurnStatus(status) {
+        this.isPlayerTurn = status;
+    };
+
+    toggleReadyStatus() {
+        this.isReady = !this.isReady;
     };
 };
 

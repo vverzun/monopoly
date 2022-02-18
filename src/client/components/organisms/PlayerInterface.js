@@ -1,32 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlayerStats from '../molecules/PlayerStats';
-import ReadyCheck from '../molecules/ReadyCheck';
+import Turn from '../molecules/Turn';
 
-const PlayerInterface = ({isGameStarted, name, isReady, readyPlayers, players, handleClick}) => (
-    <div>
-        {isGameStarted
-        ? 
-        <PlayerStats
-            name={name}
-        />
-        :
-        <ReadyCheck
-            isReady={isReady}
-            readyPlayers={readyPlayers}
-            players={players}
-            handleClick={handleClick}
-        />
-        }
-    </div>
-);
+const PlayerInterface = ({isPlayerTurn, playerName, turnPlayerName, handleTurnClick}) => {
+    return (
+        <div>
+            <Turn
+                isPlayerTurn={isPlayerTurn}
+                playerName={playerName}
+                turnPlayerName={turnPlayerName}
+                handleTurnClick={handleTurnClick}
+            />
+            <p>{`Welcome, ${playerName}! This is your main activity screen`}</p>
+        </div>
+    );
+};
 
 PlayerInterface.propTypes = {
-    name: PropTypes.string.isRequired,
-    isReady: PropTypes.bool.isRequired,
-    readyPlayers: PropTypes.number,
-    players: PropTypes.number,
-    handleClick: PropTypes.func.isRequired
+    isPlayerTurn: PropTypes.bool.isRequired,
+    playerName: PropTypes.string.isRequired,
+    turnPlayerName: PropTypes.string.isRequired,
+    handleTurnClick: PropTypes.func.isRequired
 };
 
 export default PlayerInterface;
