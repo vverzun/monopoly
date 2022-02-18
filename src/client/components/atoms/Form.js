@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Form = ({children, handleSubmit}) => {
+    const onSubmit = event => {
+        event.preventDefault();
+        handleSubmit();
+    }
+    
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
             {children}
         </form>
     );

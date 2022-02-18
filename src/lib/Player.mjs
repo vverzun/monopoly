@@ -1,12 +1,20 @@
 class Player {
-    constructor(id, name) {
+    constructor(id, data) {
         this.id = id;
-        this.name = name;
-    }
+        this.playerData = data;
+    };
 
-    static create(id, name) {
-        return new Player(id, name);
-    }
-}
+    static create(id, data) {
+        return new Player(id, data);
+    };
+
+    set update(data) {
+        this.playerData = data;
+    };
+
+    get info() {
+        return this.playerData;
+    };
+};
 
 export default Player;
