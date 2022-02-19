@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import Text from '../atoms/Text';
 import Button from '../atoms/Button';
 
-const Turn = ({isPlayerTurn, playerName, turnPlayerName, handleTurnClick}) => {
+const Turn = props => {
+    const {
+        isPlayerTurn,
+        playerName,
+        turnPlayerName,
+        handleTurnClick
+    } = props;
+    
     return (
         <div>
             <Text
@@ -11,7 +18,7 @@ const Turn = ({isPlayerTurn, playerName, turnPlayerName, handleTurnClick}) => {
             />
             <Button
                 text='End turn'
-                isDisabled={isPlayerTurn}
+                isActive={isPlayerTurn}
                 handleClick={handleTurnClick}
             />
         </div>

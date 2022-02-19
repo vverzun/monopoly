@@ -22,7 +22,10 @@ const heartbeat = () => {
 };
 
 const App = () => {
-    const [data, update] = useState({playerData: {}, gameData: {}});
+    const [data, update] = useState({
+        playerData: {}, 
+        gameData: {}}
+    );
     const [name, handleChange] = useState('');
     
     useEffect(() => {
@@ -43,8 +46,7 @@ const App = () => {
             {data.playerData.isLoggedIn
                 ? 
                 <PlayerView
-                    {...data.playerData} ////REBUILD HERE PROP ACCESS
-                    {...data.gameData}
+                    {...data}
                     handleCheckClick={() => helpers.changePlayerStatus(ws)}
                     handleTurnClick={() => helpers.passPlayerTurn(ws)}
                 />    

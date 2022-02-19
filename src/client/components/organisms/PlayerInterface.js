@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Turn from '../molecules/Turn';
 
-const PlayerInterface = ({isPlayerTurn, playerName, turnPlayerName, handleTurnClick}) => {
+const PlayerInterface = props => {
+    const {
+        isPlayerTurn,
+        playerName,
+        turnPlayerName,
+        handleTurnClick
+    } = props;
+
     return (
         <div>
             <Turn

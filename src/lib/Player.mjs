@@ -2,7 +2,6 @@ class Player {
     constructor(id, playerName) {
         this.id = id;
         this.playerName = playerName;
-
         this.isLoggedIn = true;
         this.isReady = false;
         this.isPlayerTurn = false;

@@ -6,7 +6,7 @@ const Text = ({text}) => {
         <p>
             {text}
         </p>
-    )
+    );
 };
 
 Text.propTypes = {

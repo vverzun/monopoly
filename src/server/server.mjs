@@ -11,19 +11,18 @@ const wss = new WebSocket.Server({server});
 const game = Game.create();
 
 const broadcast = () => {
-    const response = {};
+    const response = {
+        type: events.UPDATE,
+        gameData: game.gameData
+    };
 
-    response.type = events.UPDATE;
-    response.gameData = game.gameData;
-    
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
             const player = game.find('players', client.id);
-            response.playerData = (player) ? player.playerData : {};
-            console.log(response);   
+            response.playerData = (player) ? player.playerData : {}; 
             
             client.send(JSON.stringify(response));
-        }
+        };
     });
 };
 

@@ -4,7 +4,6 @@ class Game {
     constructor() {
         this.clients = new Map();
         this.players = new Map();
-
         this.playersCount = 0;
         this.readyPlayers = 0;
         this.isGameStarted = false;
@@ -33,6 +32,13 @@ class Game {
         this.update();
     };
 
+    removePlayer(id) {
+        this.clients.delete(id);
+        this.players.delete(id);
+
+        this.update();
+    };
+
     find(source, id) {
         return this[source].get(id);
     };
@@ -50,21 +56,11 @@ class Game {
 
         const pos = this.turn % this.clients.size;
         this.turn += 1;
-        const id = Array.from(this.clients.keys())[pos];
-        
-        const client = this.find('clients', id);
+        const id = Array.from(this.players.keys())[pos];
+    
         const player = this.find('players', id);
-        this.turnPlayerName = player.playerData.playerName;
         player.changeTurnStatus(true);
-
-        return client; // send here isPlayerTurn = true new player obj
-    }
-
-    removePlayer(id) {
-        this.clients.delete(id);
-        this.players.delete(id);
-
-        this.update();
+        this.turnPlayerName = player.playerData.playerName;
     };
 
     countReadyPlayers() {
@@ -80,10 +76,10 @@ class Game {
         this.playersCount = this.players.size;
         this.readyPlayers = this.countReadyPlayers();
 
-        if (this.playersCount === this.readyPlayers) { 
+        if (this.playersCount !== 0 && this.playersCount === this.readyPlayers) { 
             this.isGameStarted = true;
             this.passPlayerTurn();
-        }
+        };
     };
 };
 
