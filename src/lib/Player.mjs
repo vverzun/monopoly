@@ -4,7 +4,10 @@ class Player {
         this.playerName = playerName;
         this.isLoggedIn = true;
         this.isReady = false;
-        this.isPlayerTurn = false;
+        this.isDecide = false;
+        this.isAuctionMember = false;
+        this.balance = 1500;
+        this.property = new Map();
     };
 
     static create(id, playerName) {
@@ -14,18 +17,29 @@ class Player {
     get playerData() {
         return {
             playerName: this.playerName,
+            
             isLoggedIn: this.isLoggedIn,
             isReady: this.isReady,
-            isPlayerTurn: this.isPlayerTurn
+            isDecide: this.isDecide,
+            isAuctionMember: this.isAuctionMember,
+
+            balance: this.balance,
+            property: Array.from(this.property.values())
         };
     };
 
-    changeTurnStatus(status) {
-        this.isPlayerTurn = status;
+    toggleStatus(status) {
+        this[status] = !this[status];
     };
 
-    toggleReadyStatus() {
-        this.isReady = !this.isReady;
+    payRent(rentPrice, player) {
+        player.balance += rentPrice;
+        this.balance -= rentPrice;
+    };
+
+    buyProperty(property) {
+        this.property.set(property.id, property);
+        this.balance -= property.price;
     };
 };
 

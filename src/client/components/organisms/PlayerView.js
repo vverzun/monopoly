@@ -7,27 +7,32 @@ const PlayerView = props => {
     const {
         playerData,
         gameData,
-        handleTurnClick,
-        handleCheckClick
+        handleCheckClick,
+        handleDecisionClick,
+        handleBidChange,
+        handleBidSubmit,
+        handleLeaveClick
     } = props;
-
+    
     return (
-        <div>
-            {gameData.isGameStarted
+        <div>{
+            gameData.isGameStarted
             ? 
             <PlayerInterface
                 {...playerData}    
                 {...gameData}
-                handleTurnClick={handleTurnClick}
+                handleDecisionClick={handleDecisionClick}
+                handleBidChange={handleBidChange}
+                handleBidSubmit={handleBidSubmit}
+                handleLeaveClick={handleLeaveClick}
             />
             :
             <ReadyCheck
                 {...playerData}
                 {...gameData}
                 handleCheckClick={handleCheckClick}
-            />
-            }
-        </div>
+            />   
+        }</div>
     );
 };
 
@@ -35,7 +40,10 @@ PlayerView.propTypes = {
     playerData: PropTypes.object.isRequired,
     gameData: PropTypes.object.isRequired,
     handleCheckClick: PropTypes.func.isRequired,
-    handleTurnClick: PropTypes.func.isRequired
+    handleDecisionClick: PropTypes.func.isRequired,
+    handleBidChange: PropTypes.func.isRequired,
+    handleBidSubmit: PropTypes.func.isRequired,
+    handleLeaveClick: PropTypes.func.isRequired
 };
 
 export default PlayerView;

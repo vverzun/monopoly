@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({text, isActive, handleClick}) => {
+const Button = ({text, isActive=true, value='', handleClick}) => {
     return (
         <button 
             onClick={handleClick}
+            value={value}
             disabled={!isActive}
         >
             {text}
@@ -14,7 +15,8 @@ const Button = ({text, isActive, handleClick}) => {
 
 Button.propTypes = {
     text: PropTypes.string.isRequired,
-    isDisabled: PropTypes.bool,
+    isActive: PropTypes.bool,
+    value: PropTypes.string,
     handleClick: PropTypes.func.isRequired
 };
 

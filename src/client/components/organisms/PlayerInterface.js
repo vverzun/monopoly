@@ -1,33 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Turn from '../molecules/Turn';
+import Dashboard from '../molecules/Dashboard';
+import PlayerDecision from '../molecules/PlayerDecision';
+import Auction from '../molecules/Auction';
 
 const PlayerInterface = props => {
     const {
-        isPlayerTurn,
         playerName,
-        turnPlayerName,
-        handleTurnClick
+        property,
+        players,
+        isDecide,
+        decisionProperty,
+        isAuctionMember,
+        auctionData,
+        handleDecisionClick,
+        handleBidChange,
+        handleBidSubmit,
+        handleLeaveClick
     } = props;
-
+    
     return (
         <div>
-            <Turn
-                isPlayerTurn={isPlayerTurn}
-                playerName={playerName}
-                turnPlayerName={turnPlayerName}
-                handleTurnClick={handleTurnClick}
+            <p>{`Remember, ${playerName}, this is only a game :)`}</p>
+            <Dashboard
+                curPlayerName={playerName}
+                players={players}
+                property={property}
             />
-            <p>{`Welcome, ${playerName}! This is your main activity screen`}</p>
+
+            {isDecide 
+                && 
+            <PlayerDecision 
+                decisionProperty={decisionProperty}
+                handleDecisionClick={handleDecisionClick} 
+            />}
+
+            {isAuctionMember
+                && 
+            <Auction
+                {...auctionData}
+                playerName={playerName}
+                handleLeaveClick={handleLeaveClick}
+                handleBidChange={handleBidChange}
+                handleBidSubmit={handleBidSubmit}
+            />}
         </div>
     );
 };
 
 PlayerInterface.propTypes = {
-    isPlayerTurn: PropTypes.bool.isRequired,
-    playerName: PropTypes.string.isRequired,
-    turnPlayerName: PropTypes.string.isRequired,
-    handleTurnClick: PropTypes.func.isRequired
+    playerName: PropTypes.string.isRequired, 
+    property: PropTypes.arrayOf(PropTypes.object).isRequired,
+    players: PropTypes.arrayOf(PropTypes.object).isRequired,
+    isDecide: PropTypes.bool.isRequired,
+    decisionProperty: PropTypes.object.isRequired,
+    isAuctionMember: PropTypes.bool.isRequired,
+    auctionData: PropTypes.object,
+    handleDecisionClick: PropTypes.func.isRequired,
+    handleBidChange: PropTypes.func.isRequired, 
+    handleBidSubmit: PropTypes.func.isRequired,
+    handleLeaveClick: PropTypes.func.isRequired
 };
 
 export default PlayerInterface;

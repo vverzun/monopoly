@@ -18,8 +18,8 @@ const broadcast = () => {
 
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
-            const player = game.find('players', client.id);
-            response.playerData = (player) ? player.playerData : {}; 
+            const player = response.playerData = game.findPlayer(client.id);
+            response.playerData = player.playerData ? player.playerData : {}; 
             
             client.send(JSON.stringify(response));
         };
@@ -35,19 +35,49 @@ wss.on('connection', ws => {
 
         switch(request.type) {
             case events.PLAYER_ADD: {
-                game.addPlayer(ws, request.data);
+                game.addPlayer(ws, request.name);
 
                 broadcast();
             }; break;
 
             case events.PLAYER_READY: {
-                game.togglePlayerStatus(ws.id);
-            
+                game.findPlayer(ws.id).toggleStatus('isReady');
+                game.update();
+
                 broadcast();
             }; break;
 
-            case events.PLAYER_PASS_TURN: {
-                game.passPlayerTurn();
+            case events.PLAYER_ON_PROPERTY: {
+                const [isAvailable, player] = game.isPropertyAvailable(request.property.id);
+                
+                if (isAvailable) {
+                    game.findPlayer(ws.id).toggleStatus('isDecide');                                                            
+                    game.holdDecisionProperty(request.property);
+                }
+                else game.findPlayer(ws.id).payRent(request.property.rent, player);
+    
+                broadcast();
+            }; break;
+
+            case events.PLAYER_DECIDE: {
+                if (request.decision === 'Yes') 
+                    game.findPlayer(ws.id).buyProperty(game.decisionProperty);
+                else 
+                    game.startAuction();                                                      
+
+                game.findPlayer(ws.id).toggleStatus('isDecide');
+
+                broadcast();
+            }; break;
+
+            case events.PLAYER_BID: {
+                game.auction.placeBid(ws.id, request.bid);
+
+                broadcast();
+            }; break;
+
+            case events.PLAYER_LEAVE_AUCTION: {
+                game.auction.excludeAuctionMember(ws.id);
 
                 broadcast();
             }; break;
@@ -59,7 +89,7 @@ wss.on('connection', ws => {
     });
 
     ws.on('close', () => {
-        game.removePlayer(ws.id);
+        game.removePlayer(ws.id);                                                                 
 
         broadcast();
     });

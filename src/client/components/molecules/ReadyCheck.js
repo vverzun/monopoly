@@ -18,7 +18,6 @@ const ReadyCheck = props => {
             />
             <Button
                 text={isReady ? 'Cancel' : 'Ready'}
-                isActive={true}
                 handleClick={handleCheckClick}
             />
         </div>
