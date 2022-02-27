@@ -28,11 +28,9 @@ class Auction {
         };
     };
 
-    placeBid(id, bid) {
-        if (bid > this.highestBid) {                                    
-            this.highestBid = bid;                                      
-            this.auctionWinner = id;                                                
-        }
+    placeBid(id, bid) {              
+        this.highestBid = bid;                                      
+        this.auctionWinner = id;                                                
     };
 
     countAuctionMembers() {
@@ -45,11 +43,7 @@ class Auction {
     };
 
     excludeAuctionMember(id) {
-        if (id === this.winner) return;
-
         this.auctionMembers.get(id).toggleStatus('isAuctionMember');
-        
-        if (this.countAuctionMembers() === 1) this.finishAuction();
     };
     
     finishAuction() {
@@ -57,8 +51,7 @@ class Auction {
         
         const winner = this.auctionMembers.get(this.auctionWinner);
         
-        this.auctionProperty.price = this.highestBid; //MUTATING DEFAULT MOCK OBJECT MAY INFLUENCE GAME IN THE FUTURE
-        winner.buyProperty(this.auctionProperty);
+        winner.buyProperty(this.auctionProperty, this.highestBid);
         winner.toggleStatus('isAuctionMember');
     };
 };

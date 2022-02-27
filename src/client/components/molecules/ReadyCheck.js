@@ -16,6 +16,7 @@ const ReadyCheck = props => {
             <Text
                 text={`Ready players: ${readyPlayers}/${playersCount}`}
             />
+            
             <Button
                 text={isReady ? 'Cancel' : 'Ready'}
                 handleClick={handleCheckClick}

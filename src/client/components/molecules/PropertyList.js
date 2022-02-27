@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Property from './Property';
+import Property from '../atoms/Property';
 import Text from '../atoms/Text';
 
 const PropertyList = ({property}) => {

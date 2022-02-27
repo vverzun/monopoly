@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import Leaderboard from './Leaderboard';
 import PropertyList from './PropertyList';
 
-const Dashboard = ({curPlayerName, players, property}) => {
+const Dashboard = ({players, property}) => {
     return (
         <div>
             <Leaderboard
-                curPlayerName={curPlayerName}
                 players={players}
             />
             <PropertyList
@@ -18,7 +17,6 @@ const Dashboard = ({curPlayerName, players, property}) => {
 };
 
 Dashboard.propTypes = {
-    curPlayerName: PropTypes.string.isRequired,
     players: PropTypes.arrayOf(PropTypes.object).isRequired,
     property: PropTypes.arrayOf(PropTypes.object).isRequired
 };

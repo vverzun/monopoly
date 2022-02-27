@@ -4,7 +4,7 @@ import Form from '../atoms/Form';
 import LabeledInput from './LabeledInput';
 import Input from '../atoms/Input';
 
-const InputForm = ({id, labelText, handleSubmit, handleChange}) => {
+const InputForm = ({id, labelText, handleChange, handleSubmit}) => {
     return (
         <Form handleSubmit={handleSubmit}>  
             <LabeledInput
@@ -24,8 +24,8 @@ const InputForm = ({id, labelText, handleSubmit, handleChange}) => {
 InputForm.propTypes = {
     id: PropTypes.string.isRequired,
     labelText: PropTypes.string.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
 };
 
 export default InputForm;

@@ -28,7 +28,8 @@ const App = () => {
         gameData: {}
     });
     const [inputValue, handleChange] = useState('');
-    
+    const [error, handleError] = useState('');
+
     useEffect(() => {
         ws.onopen = () => heartbeat();
         ws.onmessage = response => {
@@ -36,6 +37,7 @@ const App = () => {
             
             switch(response.type) {
                 case events.UPDATE: update(response); break;
+                case events.ERROR: handleError(response.error); break;
                 case events.PING: heartbeat(); break;
             };
         };
@@ -44,27 +46,30 @@ const App = () => {
     
     return (
         <div>
-            {
-                data.playerData.isLoggedIn
-                ? 
-                <PlayerView
-                    {...data}
-                    handleCheckClick={() => actions.changePlayerStatus(ws)}
-                    handleDecisionClick={event => actions.getPlayerDecision(event.target.value, ws)}
-                    handleBidChange={event => handleChange(event.target.value)}
-                    handleBidSubmit={() => actions.submitPlayerBid(inputValue, ws)}
-                    handleLeaveClick={() => actions.playerLeaveAuction(ws)}
-                />    
-                :
+            {data.playerData.isLoggedIn
+            ? 
+            <PlayerView
+                {...data}
+                handleChange={event => handleChange(event.target.value)}
+                handleCheckClick={() => actions.changePlayerStatus(ws)}
+                handleDecisionClick={event => actions.sendPlayerDecision(event.target.value, ws)}
+                handleLeaveClick={() => actions.playerLeaveAuction(ws)}
+                handleBidSubmit={() => actions.submitPlayerBid(inputValue, ws)}
+                handleCardNumberSubmit={() => actions.submitCardNumber(inputValue, data, ws)}
+                handleDiceRollSubmit={() => actions.submitDiceRollResult(inputValue, ws)}
+            />    
+            :
+            <>
                 <InputForm
                     id='name'
                     labelText='Enter your name: '
-                    handleSubmit={() => actions.addPlayer(inputValue, ws)}
                     handleChange={event => handleChange(event.target.value)}
+                    handleSubmit={() => actions.addPlayer(inputValue, ws)}
                 />
-            }
-            
-            <TestInput
+                {error && <p>Error: {error}</p>}
+            </>}
+
+            <TestInput 
                 ws={ws}
             />
         </div> 

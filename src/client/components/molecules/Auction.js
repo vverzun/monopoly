@@ -4,19 +4,19 @@ import Text from '../atoms/Text';
 import Button from '../atoms/Button';
 import InputForm from './InputForm';
 
-const Auction = ({highestBid, auctionWinner, playerName, handleLeaveClick, handleBidChange, handleBidSubmit}) => {
+const Auction = ({name, highestBid, auctionWinner, handleChange, handleLeaveClick, handleBidSubmit}) => {
     return (
         <div> 
             <Text
                 text={`Highest bid: ${highestBid}`}
             />
             <Text
-                text={`Current Winner is: ${auctionWinner.playerName === playerName ? 'You' : auctionWinner.playerName}`}
+                text={`Current Winner is: ${auctionWinner.name === name ? 'You' : auctionWinner.name}`}
             />
             <InputForm
                 id='bid'
                 labelText='Place your bid here: '
-                handleChange={handleBidChange}
+                handleChange={handleChange}
                 handleSubmit={handleBidSubmit}
             />
             <Button
@@ -28,12 +28,12 @@ const Auction = ({highestBid, auctionWinner, playerName, handleLeaveClick, handl
 };
 
 Auction.propTypes = {
+    name: PropTypes.string.isRequired,
     highestBid: PropTypes.string.isRequired,
     auctionWinner: PropTypes.object,
-    playerName: PropTypes.string.isRequired,
-    handleBidSubmit: PropTypes.func.isRequired,
-    handleBidChange: PropTypes.func.isRequired,
-    handleLeaveClick: PropTypes.func.isRequired
+    handleChange: PropTypes.func.isRequired,
+    handleLeaveClick: PropTypes.func.isRequired,
+    handleBidSubmit: PropTypes.func.isRequired
 };
 
 export default Auction;

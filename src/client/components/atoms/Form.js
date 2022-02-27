@@ -5,6 +5,7 @@ const Form = ({children, handleSubmit}) => {
     const onSubmit = event => {
         event.preventDefault();
         handleSubmit();
+        event.target.reset();
     }
     
     return (
