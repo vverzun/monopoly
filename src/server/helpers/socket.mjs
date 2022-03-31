@@ -1,6 +1,6 @@
 import WebSocket from 'ws';
 import {wss} from '../server.mjs';
-import {gameEvents} from '../events.mjs';
+import events from '../events.mjs';
 import uuid from 'uuid';
 
 const registerWSConnection = (ws) => {
@@ -8,18 +8,16 @@ const registerWSConnection = (ws) => {
 	ws.isAlive = true;
 };
 
-const broadcast = (banker) => {
-	const response = {
-		type: gameEvents.UPDATE,
-		gameData: banker.gameData,
-	};
+const findClient = (id) => {
+	for (let client of wss.clients) {
+		if (client.id === id) return client;
+	}
+};
 
+const broadcast = (response, self) => {
 	wss.clients.forEach((client) => {
-		if (client.readyState === WebSocket.OPEN) {
-			const player = banker.findPlayer(client.id);
-			response.playerData = player ? player.playerData : {};
-
-			client.send(JSON.stringify(response));
+		if (client.id !== self && client.readyState === WebSocket.OPEN) {
+			client.send(response);
 		};
 	});
 };
@@ -29,15 +27,13 @@ const heartbeat = () => setInterval(() => {
 		if (!ws.isAlive) return ws.close();
 
 		ws.isAlive = false;
-		ws.send(JSON.stringify({type: gameEvents.PING}));
+		ws.send(JSON.stringify({type: events.PING}));
 	});
 }, 20000);
 
-const parseRequest = (request) => JSON.parse(request);
-
 export default {
 	registerWSConnection: registerWSConnection,
+	findClient: findClient,
 	broadcast: broadcast,
-	heartbeat: heartbeat,
-	parseRequest: parseRequest,
+	heartbeat: heartbeat
 };

@@ -9,11 +9,12 @@ const gameboard = [
 	{
 		id: '5c8c2324-7dbc-4292-bd59-d3754c1258c7',
 		type: 'go',
-		price: -200,
+		amount: 200,
 	},
 	{
 		id: '4e3c92c5-e0ad-46fb-98ed-bc0a90c08c10',
 		type: 'street',
+		color: '#945535',
 		group: ['4e3c92c5-e0ad-46fb-98ed-bc0a90c08c10',
 			'6351bd75-ad23-49a9-a87b-626a9fcee0ab'],
 		title: 'OLD KENT ROAD',
@@ -34,6 +35,7 @@ const gameboard = [
 	{
 		id: '6351bd75-ad23-49a9-a87b-626a9fcee0ab',
 		type: 'street',
+		color: '#945535',
 		group: ['4e3c92c5-e0ad-46fb-98ed-bc0a90c08c10',
 			'6351bd75-ad23-49a9-a87b-626a9fcee0ab'],
 		title: 'WHITECHAPEL ROAD',
@@ -50,7 +52,7 @@ const gameboard = [
 	{
 		id: '25de2832-31a7-4a85-9feb-156a934a6ecd',
 		type: 'tax',
-		tax: 200,
+		amount: -200,
 	},
 	{
 		id: '48a0d64b-358e-4a2d-8a25-08bea25b5961',
@@ -68,6 +70,7 @@ const gameboard = [
 	{
 		id: 'b95e0aef-0b8a-4d2b-aa39-1b9a660b1cf5',
 		type: 'street',
+		color: '#a8e2f9',
 		group: ['b95e0aef-0b8a-4d2b-aa39-1b9a660b1cf5',
 			'5ad1e96c-ef9b-4ab5-96b2-f9202d4debd2',
 			'32c9c9f4-59ed-4521-8b71-c87764e5f0fc'],
@@ -89,6 +92,7 @@ const gameboard = [
 	{
 		id: '5ad1e96c-ef9b-4ab5-96b2-f9202d4debd2',
 		type: 'street',
+		color: '#a8e2f9',
 		group: ['b95e0aef-0b8a-4d2b-aa39-1b9a660b1cf5',
 			'5ad1e96c-ef9b-4ab5-96b2-f9202d4debd2',
 			'32c9c9f4-59ed-4521-8b71-c87764e5f0fc'],
@@ -106,6 +110,7 @@ const gameboard = [
 	{
 		id: '32c9c9f4-59ed-4521-8b71-c87764e5f0fc',
 		type: 'street',
+		color: '#a8e2f9',
 		group: ['b95e0aef-0b8a-4d2b-aa39-1b9a660b1cf5',
 			'5ad1e96c-ef9b-4ab5-96b2-f9202d4debd2',
 			'32c9c9f4-59ed-4521-8b71-c87764e5f0fc'],
@@ -128,6 +133,7 @@ const gameboard = [
 	{
 		id: '2f8e385a-f1f2-482e-96d3-4419c28f9c9a',
 		type: 'street',
+		color: '#d73b9a',
 		group: ['2f8e385a-f1f2-482e-96d3-4419c28f9c9a',
 			'4519b744-30d7-4daf-b4ef-232328f90b84',
 			'32676efe-55da-4982-afcb-6ef5c00a58a8'],
@@ -155,6 +161,7 @@ const gameboard = [
 	{
 		id: '4519b744-30d7-4daf-b4ef-232328f90b84',
 		type: 'street',
+		color: '#d73b9a',
 		group: ['2f8e385a-f1f2-482e-96d3-4419c28f9c9a',
 			'4519b744-30d7-4daf-b4ef-232328f90b84',
 			'32676efe-55da-4982-afcb-6ef5c00a58a8'],
@@ -172,6 +179,7 @@ const gameboard = [
 	{
 		id: '32676efe-55da-4982-afcb-6ef5c00a58a8',
 		type: 'street',
+		color: '#d73b9a',
 		group: ['2f8e385a-f1f2-482e-96d3-4419c28f9c9a',
 			'4519b744-30d7-4daf-b4ef-232328f90b84',
 			'32676efe-55da-4982-afcb-6ef5c00a58a8'],
@@ -202,6 +210,7 @@ const gameboard = [
 	{
 		id: '8c960fe6-a7ec-4f6f-95cb-96fb41a549d1',
 		type: 'street',
+		color: '#f7941d',
 		group: ['8c960fe6-a7ec-4f6f-95cb-96fb41a549d1',
 			'46b3736d-533d-41f1-a0ec-c5b7e2a75242',
 			'f91bd417-bd3c-4134-97df-0b0256bdd236'],
@@ -223,6 +232,7 @@ const gameboard = [
 	{
 		id: '46b3736d-533d-41f1-a0ec-c5b7e2a75242',
 		type: 'street',
+		color: '#f7941d',
 		group: ['8c960fe6-a7ec-4f6f-95cb-96fb41a549d1',
 			'46b3736d-533d-41f1-a0ec-c5b7e2a75242',
 			'f91bd417-bd3c-4134-97df-0b0256bdd236'],
@@ -240,6 +250,7 @@ const gameboard = [
 	{
 		id: 'f91bd417-bd3c-4134-97df-0b0256bdd236',
 		type: 'street',
+		color: '#f7941d',
 		group: ['8c960fe6-a7ec-4f6f-95cb-96fb41a549d1',
 			'46b3736d-533d-41f1-a0ec-c5b7e2a75242',
 			'f91bd417-bd3c-4134-97df-0b0256bdd236'],
@@ -258,6 +269,7 @@ const gameboard = [
 	{
 		id: '236a979f-9947-40ae-8955-c5f359c869f7',
 		type: 'street',
+		color: '#ed1b25',
 		group: ['236a979f-9947-40ae-8955-c5f359c869f7',
 			'fff666a1-7aeb-4e4f-bca6-83b0b7a798ca',
 			'5c02e291-af0e-4ea9-85f3-24c661d36935'],
@@ -279,6 +291,7 @@ const gameboard = [
 	{
 		id: 'fff666a1-7aeb-4e4f-bca6-83b0b7a798ca',
 		type: 'street',
+		color: '#ed1b25',
 		group: ['236a979f-9947-40ae-8955-c5f359c869f7',
 			'fff666a1-7aeb-4e4f-bca6-83b0b7a798ca',
 			'5c02e291-af0e-4ea9-85f3-24c661d36935'],
@@ -296,6 +309,7 @@ const gameboard = [
 	{
 		id: '5c02e291-af0e-4ea9-85f3-24c661d36935',
 		type: 'street',
+		color: '#ed1b25',
 		group: ['236a979f-9947-40ae-8955-c5f359c869f7',
 			'fff666a1-7aeb-4e4f-bca6-83b0b7a798ca',
 			'5c02e291-af0e-4ea9-85f3-24c661d36935'],
@@ -326,6 +340,7 @@ const gameboard = [
 	{
 		id: '1a2a7f73-5a91-4c68-8da9-3a9249074aee',
 		type: 'street',
+		color: '#fef200',
 		group: ['1a2a7f73-5a91-4c68-8da9-3a9249074aee',
 			'609bcab9-e29f-4a46-9add-5024337066da',
 			'7956fc9c-1990-48fa-a423-472c1a33f166'],
@@ -343,6 +358,7 @@ const gameboard = [
 	{
 		id: '609bcab9-e29f-4a46-9add-5024337066da',
 		type: 'street',
+		color: '#fef200',
 		group: ['1a2a7f73-5a91-4c68-8da9-3a9249074aee',
 			'609bcab9-e29f-4a46-9add-5024337066da',
 			'7956fc9c-1990-48fa-a423-472c1a33f166'],
@@ -370,6 +386,7 @@ const gameboard = [
 	{
 		id: '1a1649e6-a5b9-4558-a00f-49d9bcc7e45d',
 		type: 'street',
+		color: '#fef200',
 		group: ['1a2a7f73-5a91-4c68-8da9-3a9249074aee',
 			'609bcab9-e29f-4a46-9add-5024337066da',
 			'7956fc9c-1990-48fa-a423-472c1a33f166'],
@@ -392,6 +409,7 @@ const gameboard = [
 	{
 		id: '5ae2d918-0725-4c3c-a272-49d602cddeca',
 		type: 'street',
+		color: '#1fb15c',
 		group: ['5ae2d918-0725-4c3c-a272-49d602cddeca',
 			'7cde65a8-b06d-4c64-b464-97cf04b138f4',
 			'eb777fd4-6694-4b25-ad69-6d8f8576d9ee'],
@@ -409,6 +427,7 @@ const gameboard = [
 	{
 		id: '7cde65a8-b06d-4c64-b464-97cf04b138f4',
 		type: 'street',
+		color: '#1fb15c',
 		group: ['5ae2d918-0725-4c3c-a272-49d602cddeca',
 			'7cde65a8-b06d-4c64-b464-97cf04b138f4',
 			'eb777fd4-6694-4b25-ad69-6d8f8576d9ee'],
@@ -430,6 +449,7 @@ const gameboard = [
 	{
 		id: 'eb777fd4-6694-4b25-ad69-6d8f8576d9ee',
 		type: 'street',
+		color: '#1fb15c',
 		group: ['5ae2d918-0725-4c3c-a272-49d602cddeca',
 			'7cde65a8-b06d-4c64-b464-97cf04b138f4',
 			'eb777fd4-6694-4b25-ad69-6d8f8576d9ee'],
@@ -464,6 +484,7 @@ const gameboard = [
 	{
 		id: '261e177e-063d-494f-a032-918b83ea7a3d',
 		type: 'street',
+		color: '#0072b8',
 		group: ['261e177e-063d-494f-a032-918b83ea7a3d',
 			'42adbb1a-e6bb-4ab8-89f4-504ef9259273'],
 		title: 'PARK LANE',
@@ -485,6 +506,7 @@ const gameboard = [
 	{
 		id: '42adbb1a-e6bb-4ab8-89f4-504ef9259273',
 		type: 'street',
+		color: '#0072b8',
 		group: ['261e177e-063d-494f-a032-918b83ea7a3d',
 			'42adbb1a-e6bb-4ab8-89f4-504ef9259273'],
 		title: 'MAYFAIR',

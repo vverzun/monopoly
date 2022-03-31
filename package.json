@@ -10,10 +10,24 @@
   },
   "author": "Vladyslav Verzun",
   "license": "ISC",
+  "browserslist": [
+    "> 1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "dependencies": {
+    "@material-ui/core": "^4.9.7",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.47",
+    "autoprefixer": "^9.7.5",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
     "uuid": "^3.4.0",
     "webpack-require-http": "^0.4.3",
     "ws": "^7.2.1"
@@ -28,7 +42,7 @@
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.18.3",
-    "file-loader": "^5.0.2",
+    "file-loader": "^5.1.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
     "nodemon": "^2.0.2",

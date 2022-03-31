@@ -1,0 +1,17 @@
+.dialog {
+    .closeIcon {
+        position: absolute;
+        right: 0;
+    };
+
+    .escapeContainer {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        padding: 1rem;
+
+        .button {
+            margin-right: 1rem;
+        }
+    };
+};

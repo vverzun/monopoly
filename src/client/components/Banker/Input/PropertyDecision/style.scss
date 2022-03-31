@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 0.5rem;
+
+    .price {
+        margin-top: 0.5rem;
+    };
+
+    .actions {
+        display: flex;
+        justify-content: center;
+    };
+};

@@ -6,12 +6,13 @@ import processRentAmount from './helpers/processRentAmount.mjs';
 import updateBuilding from './helpers/updateBulding.mjs';
 import {validateBankruptBalance} from '../Error/bankrupt.mjs';
 import applyBankrupt from './helpers/applyBankrupt.mjs';
+import response from '../../server/response/response.mjs';
 
 class Player {
 	constructor(id, name, logger) {
 		this.id = id;
 		this.name = name;
-		this.balance = 600;
+		this.balance = 1500;
 		this.property = new Map();
 		this.isLoggedIn = true;
 		this.isAuction = false;
@@ -29,21 +30,6 @@ class Player {
 			owesTo: '',
 			debt: 0,
 			isBankrupt: false,
-		};
-	};
-
-	get playerData() {
-		return {
-			id: this.id,
-			name: this.name,
-			balance: this.balance,
-			property: Array.from(this.property.values()),
-			isLoggedIn: this.isLoggedIn,
-			freePrisonEscape: this.freePrisonEscape,
-			isAuction: this.isAuction,
-			isReady: this.isReady,
-			isPrisoner: this.isPrisoner,
-			input: this.input,
 		};
 	};
 
@@ -71,21 +57,23 @@ class Player {
 	buyProperty(property, price, previousOwner) {
 		this.changeBalance(-Math.abs(price), previousOwner);
 		this.property.set(property.id, property);
-
 		this.logger.log(`${this.name} bought a ${property.title}`);
+		response.buyProperty(this.id, property);
 	};
 
 	payRent(property, owner, diceAmount) {
-		processRentAmount(property, owner, diceAmount, this);
+		processRentAmount(property, owner, this, diceAmount);
 	};
 
 	setInput(inputType, isInput) {
 		this.input.type = inputType;
 		this.input.isInput = isInput;
+		response.setInput(this.id, inputType, isInput);
 	};
 
-	changeStatus(status, value) {
+	changeStatus(status, value, banker) {
 		this[status] = value;
+		response.changeStatus(this.id, status, value, banker);
 	};
 
 	buyBuilding({building, propertyId}) {
@@ -106,6 +94,7 @@ class Player {
 		this.balance += amount;
 		applyBankrupt(amount, payTo, this);
 		this.logger.log(`${this.name}'s amount changed by ${amount}`);
+		response.changeBalance(this.id, this.balance);
 	};
 };
 

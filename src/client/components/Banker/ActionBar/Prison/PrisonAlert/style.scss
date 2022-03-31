@@ -1,0 +1,28 @@
+.dialog {
+    .closeIcon {
+        position: absolute; 
+        right: 0;
+    };
+    
+    .alert {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 25rem;
+        
+        .text {
+            display: block;
+            z-index: 1;
+            font-size: 2rem;
+            position: absolute;
+            line-height: 182px;
+        };
+        
+        .image {
+            width: 50%;
+            opacity: 40%;
+        };
+    };
+};
+
+

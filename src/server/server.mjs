@@ -4,8 +4,8 @@ import Banker from '../lib/Banker/Banker.mjs';
 import Logger from '../lib/Logger/Logger.mjs';
 import config from './helpers/config.mjs';
 import socket from './helpers/socket.mjs';
-import processRequestData from './helpers/processRequestData.mjs';
-import {gameEvents} from './events.mjs';
+import processRequest from './helpers/processRequest.mjs';
+import response from './response/response.mjs';
 
 const server = http.createServer();
 export const wss = new WebSocket.Server({server});
@@ -15,17 +15,13 @@ const banker = Banker.create(logger);
 
 wss.on('connection', (ws) => {
 	socket.registerWSConnection(ws);
-
+	
 	ws.on('message', (request) => {
 		try {
-			processRequestData(socket.parseRequest(request), banker, ws);
-			socket.broadcast(banker);
+			processRequest(JSON.parse(request), banker, ws);
 		} catch (error) {
 			console.log(error);
-			ws.send(JSON.stringify({
-				type: gameEvents.ERROR,
-				error: error,
-			}));
+			response.error(ws.id, error.message);
 		};
 	});
 

@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 1rem;
+
+    .lotInfo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .lot {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        };
+
+        .info {
+           margin-left: 1rem;
+
+           .winner {
+               margin-bottom: 1rem;
+           };
+
+           .actions {
+               display: flex;
+               flex-flow: column;
+           };
+        };
+    };
+};

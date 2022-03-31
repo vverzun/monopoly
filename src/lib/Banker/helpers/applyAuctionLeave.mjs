@@ -8,7 +8,7 @@ const applyAuctionLeave = (player, players, banker, auction) => {
 	auction.excludeMember(player);
 
 	if (conditionedPlayers(utils.mapToArray(players), 'isAuction') === 1) {
-		auction.end(banker.findPlayer(auction.winner), banker);
+		auction.end(banker);
 	};
 };
 

@@ -1,22 +1,22 @@
-import {inputEvents as e} from '../../../server/events.mjs';
+import events from '../../../server/events.mjs';
 import {validateDiceRoll, validateAuctionBid} from '../../Error/input.mjs';
 
 const applyInput = (player, input, banker) => {
 	const inputs = {
-		[e.DICE_ROLL]: () => {
+		[events.DICE_ROLL]: () => {
 			validateDiceRoll(input.diceAmount);
-			player.payRent(banker.holdProperty, banker.holdOwner, input.diceAmount);
+			player.payRent(banker, banker.holdProperty, banker.holdOwner, input.diceAmount);
 		},
 
-		[e.CARD]: () =>
+		[events.CARD]: () =>
 			player.processCard(banker.players, input.card),
 
-		[e.PROPERTY_DECISION]: () =>
+		[events.PROPERTY_DECISION]: () =>
 			player.processPropertyDecision(input.decision, banker),
 
-		[e.BID]: () => {
+		[events.BID]: () => {
 			validateAuctionBid(input.bid, banker.auction.highestBid);
-			banker.auction.applyBid(player.id, input.bid);
+			banker.auction.applyBid(player, input.bid);
 		},
 	};
 

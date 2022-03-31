@@ -1,12 +1,12 @@
-import {inputEvents} from '../../../server/events.mjs';
+import events from '../../../server/events.mjs';
 import {countPlayerPropertyType} from '../../Banker/helpers/players.mjs';
 import {isColorGroupComplete} from './colorGroup.mjs';
 
-const processRentAmount = (property, owner, diceAmount, player) => {
+const processRentAmount = (property, owner, player, diceAmount) => {
 	if (owner.property.get(property.id).isMortgaged) {
 		player.logger.log(`${property.title} is mortgaged, the rent is free!`);
 	} else if (property.type === 'service' && !diceAmount) {
-		player.setInput(inputEvents.DICE_ROLL, true);
+		player.setInput(player.id, events.DICE_ROLL, true);
 	} else {
 		let amount = calculateRent(property, owner.property, diceAmount);
 

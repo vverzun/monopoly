@@ -1,17 +1,19 @@
 import Player from '../Player/Player.mjs';
 import Auction from '../Auction/Auction.mjs';
-import utils from '../utils/utils.mjs';
-import {conditionedPlayers, addMembersToAuction} from './helpers/players.mjs';
+import {addMembersToAuction, conditionedPlayers} from './helpers/players.mjs';
 import validateLogIn from '../Error/validateLogIn.mjs';
+import applyBoardMove from './helpers/applyBoardMove.mjs';
 import applyProperty from './helpers/applyProperty.mjs';
 import applyAuctionLeave from './helpers/applyAuctionLeave.mjs';
 import applyBankrupt from './helpers/applyBankrupt.mjs';
 import applyInput from './helpers/applyInput.mjs';
 import applyTrade from './helpers/applyTrade.mjs';
 import applyBuilding from './helpers/applyBuilding.mjs';
+import response from '../../server/response/response.mjs';
 
 class Banker {
 	constructor(logger) {
+		this.clients = new Map();
 		this.players = new Map();
 		this.isGameStarted = false;
 		this.holdProperty = {};
@@ -26,25 +28,19 @@ class Banker {
 		this.logger = logger;
 	};
 
-	get gameData() {
-		return {
-			players: utils.mapToArray(this.players),
-			isGameStarted: this.isGameStarted,
-			playersCount: this.players.size,
-			readyCount: conditionedPlayers(this.players, 'isReady'),
-			holdProperty: this.holdProperty,
-			auctionData: this.auction.auctionData,
-			logData: this.logger.logData,
-		};
-	};
-
 	static create(logger) {
 		return new Banker(logger);
 	};
+	
+	processBoardMove(player, cell) {
+		applyBoardMove(this, player, cell);
+	};
 
-	addPlayer(ws, name) {
-		validateLogIn(this.players.size, this.isGameStarted);
+	addPlayer(name, ws) {
+		validateLogIn(name, this.players.size, this.isGameStarted);
+		this.clients.set(ws.id, ws);
 		this.players.set(ws.id, Player.create(ws.id, name, this.logger));
+		response.addPlayer(ws.id, name, this);
 	};
 
 	findPlayer(id) {
@@ -52,17 +48,18 @@ class Banker {
 	};
 
 	setPlayerReady(player, status, value) {
-		player.changeStatus(status, value);
+		player.changeStatus(status, value, this);
 
-		if (this.gameData.readyCount === this.gameData.playersCount) {
+		if (conditionedPlayers(this.players, 'isReady') === this.players.size) {
 			this.isGameStarted = true;
 			this.logger.log(`Game has started.`);
+			response.startGame();	
 		};
 	};
 
 	startAuction(property) {
 		this.auction = Auction.create(this.players, property, this.logger);
-		addMembersToAuction(this.players);
+		addMembersToAuction(this);
 	};
 
 	processProperty(player, property) {
@@ -90,11 +87,14 @@ class Banker {
 	};
 
 	removePlayer(id) {
+		this.logger.log(`Player left the game`);
+		this.clients.delete(id);
 		this.players.delete(id);
 		if (this.players.size === 0) {
 			this.isGameStarted = false;
 			this.logger.clear();
-		}
+		};
+		response.disconnect(this);
 	};
 };
 

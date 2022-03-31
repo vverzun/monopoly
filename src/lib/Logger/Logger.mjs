@@ -1,4 +1,5 @@
 import utils from '../utils/utils.mjs';
+import response from '../../server/response/response.mjs';
 import uuid from 'uuid';
 
 class Logger {
@@ -10,21 +11,20 @@ class Logger {
 		return new Logger();
 	};
 
-	get logData() {
-		return this.logs.slice(-10);
-	};
-
 	clear() {
 		this.logs = [];
+		response.clearLogger();
 	};
 
 	log(message) {
 		const log = {
 			id: uuid.v4(),
-			message: `${utils.currentTime()} - ${message}`,
+			time: utils.currentTime(),
+			message: message,
 		};
 
 		this.logs.push(log);
+		response.log(log);
 	};
 };
 

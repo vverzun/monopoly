@@ -1,4 +1,4 @@
-import {utils as u} from '../../utils/utils.mjs';
+import utils from '../../utils/utils.mjs';
 
 export const isColorGroupComplete = (id, property) => (
 	property.get(id).group.every((id) => property.has(id))
@@ -14,7 +14,7 @@ export const isColorGroupHasNoBuildings = (propertyId, property) => (
 );
 
 export const isEquallyDistributed = (propertyId, action, property) => (
-	u.arrayWithoutItem(propertyId, property.get(propertyId).group).every((id) => {
+	utils.arrayWithoutItem(propertyId, property.get(propertyId).group).every((id) => {
 		if (action === 'buy') {
 			return property.get(propertyId).house - property.get(id).house <= 0;
 		};

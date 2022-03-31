@@ -1,0 +1,77 @@
+.card {
+	width: 200px;
+
+	.cardContainer {
+		@extend .box;
+		margin: 0.25rem;
+		font-family: 'Kabel';
+		height: 270px;
+	
+		.cardHeader {
+			@extend .box;
+			width: 92%;
+			
+			.caption {
+				font-size: 0.75rem;
+			};
+
+			.title {
+				font-size: 1rem;
+				text-align: center;
+			};
+		};
+	
+		.cardBody {
+			clear: both;
+			padding: 0.25rem;
+			width: 90%;
+			border-bottom: 1px solid black;
+			margin-bottom: 0.25rem;
+
+			div:nth-of-type(even) {
+				@extend .right;	
+			};
+
+			div:nth-of-type(odd) {
+				@extend .left;	
+			};
+		};
+		
+		.cardFooter {
+			padding: 0.25rem;
+			width: 90%;
+
+			div:nth-of-type(even) {
+				@extend .right;	
+			};
+
+			div:nth-of-type(odd) {
+				@extend .left;	
+			};
+
+			div:last-child {
+				@extend .right;
+			};
+		};
+	};
+};
+
+.box {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	padding: 0.25rem;
+	border: 2px solid black;
+};
+
+.right {
+	float: right;
+	display: block;
+	font-size: 0.75rem;
+};
+
+.left {
+	float: left;
+	display: block;
+	font-size: 0.75rem;
+};

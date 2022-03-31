@@ -1,5 +1,5 @@
 const applyPropertyDecision = (decision, player, banker) => {
-	if (decision === 'Yes') {
+	if (decision === 'buy') {
 		player.changeStatus('nextRentTimes', 0);
 		player.buyProperty(banker.holdProperty, banker.holdProperty.price);
 	} else {

@@ -11,6 +11,7 @@ const currentTime = () => {
 		hour12: false,
 		hour: 'numeric',
 		minute: 'numeric',
+		second: 'numeric'
 	};
 
 	return new Date().toLocaleTimeString([], dateOptions);

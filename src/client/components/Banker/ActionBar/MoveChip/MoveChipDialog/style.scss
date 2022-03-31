@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .input {
+        margin-bottom: 1rem;
+        width: 70px;
+    };
+    
+    .actions {
+        display: flex;
+        justify-content: space-evenly;
+
+        .button {
+            font-size: 1rem;
+        };
+    };    
+};

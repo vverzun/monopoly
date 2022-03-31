@@ -1,5 +1,6 @@
 export const validateAuctionBid = (bid, highestBid) => {
-	if (bid <= highestBid) {
+	if (parseInt(bid) <= parseInt(highestBid)) {
+		console.log('true');
 		throw new Error('Auction bid must be bigger than current highest bid!');
 	}
 
@@ -9,7 +10,7 @@ export const validateAuctionBid = (bid, highestBid) => {
 };
 
 export const validateDiceRoll = (diceAmount) => {
-	if (!/^[0-9]+$/.test(bid)) {
+	if (!/^[0-9]+$/.test(diceAmount)) {
 		throw new Error('Enter numeric characters only! (Allowed input:0-9).');
 	}
 

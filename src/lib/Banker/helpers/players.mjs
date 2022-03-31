@@ -20,8 +20,8 @@ export const hasPropertyOwner = (players, propertyId) => {
 	return [true, null];
 };
 
-export const addMembersToAuction = (players) => {
-	players.forEach((player) => {
+export const addMembersToAuction = (banker) => {
+	banker.players.forEach((player) => {
 		player.changeStatus('isAuction', true);
 	});
 };

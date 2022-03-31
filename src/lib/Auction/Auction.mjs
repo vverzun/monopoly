@@ -1,3 +1,5 @@
+import response from '../../server/response/response.mjs';
+
 class Auction {
 	constructor(players, lot, property, logger) {
 		this.members = players;
@@ -9,34 +11,27 @@ class Auction {
 	};
 
 	static create(players, property, logger) {
+		const lot = property.shift();
 		logger.log('Auction started.');
-		return new Auction(players, property.shift(), property, logger);
+		response.startAuction(lot);
+		return new Auction(players, lot, property, logger);
 	};
 
-	get auctionData() {
-		const player = this.members.get(this.winner);
-
-		return {
-			lot: this.lot,
-			highestBid: this.highestBid,
-			winner: player ? player : {},
-		};
-	};
-
-	applyBid(playerId, bid) {
+	applyBid(player, bid) {
 		this.highestBid = bid;
-		this.winner = playerId;
+		this.winner = player;
+		response.applyBid(player, bid);
 	};
 
 	excludeMember(player) {
 		player.changeStatus('isAuction', false);
-		this.logger.log(`${player.name} left auction. Left: ${this.members.size}`);
+		this.logger.log(`${player.name} left auction.`);
 	};
 
-	end(winner, banker) {
-		winner.buyProperty(this.lot, this.highestBid);
-		winner.changeStatus('isAuction', false);
-		this.logger.log(`Auction ended. The winner is ${winner.name}!`);
+	end(banker) {
+		this.winner.buyProperty(this.lot, this.highestBid);
+		this.winner.changeStatus('isAuction', false);
+		this.logger.log(`Auction ended. The winner is ${this.winner.name}!`);
 
 		if (this.propertyQueue.length) {
 			banker.startAuction(this.propertyQueue);
