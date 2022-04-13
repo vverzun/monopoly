@@ -32,6 +32,7 @@ const Street = ({card}) => (
 				<Box>${card.buildingPrice}</Box><br/>
 				<Box>Hotel cost</Box>
 				<Box>${card.buildingPrice}</Box><br/>
+				<Box></Box>
 				<Box>(plus 4 houses)</Box><br/>
 			</Box>
 		</Box>

@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import monopolyLogo from '../../resources/monopolyLogo.png';
 import style from './style.scss';
 import initWebsocket from '../../utils/initWebsocket';
+
 export const ws = new WebSocket('ws://localhost:3030');
 
 const App = () => {

@@ -1,0 +1,17 @@
+.container {
+    width: 300px;
+
+    .header {
+        background-color: black;
+    
+        th {
+            text-align: center;
+            color: white;
+        }
+    };  
+
+    td {
+        text-align: center;
+        font-size: 1rem;
+    };
+};

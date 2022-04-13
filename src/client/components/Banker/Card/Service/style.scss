@@ -1,0 +1,87 @@
+.card {
+	width: 180px;
+	height: 280px;
+	display: flex;
+	font-family: 'Kabel';
+
+	.cardContainer {
+		@extend .box;
+		border: 2px solid black;
+		margin: 5px;
+
+		.cardHeader {
+			@extend .box;
+			height: 135px;
+			margin-bottom: 10px;
+			
+			.imageContainer {
+				@extend .box;
+				justify-content: center;
+				flex-grow: 1;
+
+				.image {
+					width: 50%;
+				
+				};
+			}
+			
+			.title {
+				font-size: 0.9rem;
+				text-align: center;
+			};
+		};
+
+		.text {
+			font-size: 0.75rem;
+			text-align: center;
+		};
+	};
+};
+
+.box {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+};
+
+
+// const style = {
+// 	cardContainer: {
+// 		display: 'flex',
+// 		flexFlow: 'column',
+// 		alignItems: 'center',
+// 		padding: '0.35rem 0.25rem 0.25rem 0.25rem',
+// 		border: '2px solid black',
+// 		margin: '0.25rem',
+// 		fontFamily: 'Kabel',
+// 		minHeight: '270px'
+// 	},
+
+// 	cardHeader: {
+// 		maxWidth: '140px',
+// 		display: 'flex',
+// 		flexFlow: 'column',
+// 		alignItems: 'center',
+// 		padding: '0.25rem'
+// 	},
+
+// 	cardBody: {	
+// 		padding: '0.25rem',
+// 		maxWidth: '140px',
+// 	},
+
+// 	tap: {
+// 		width: '90%'
+// 	},
+
+// 	bulb: {
+// 		width: '55%'
+// 	},
+
+// 	cardFooter: {
+// 		padding: '0.25rem',
+// 		width: '90%'
+// 	}
+// };
+
+// export default style;

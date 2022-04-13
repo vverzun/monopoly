@@ -22,7 +22,7 @@ export const boardMove = (cell) => {
 
 export const escapePrison = (escapeType) => {
     request(events.ESCAPE_PRISON, 'escapeType', escapeType);
-}
+};
 
 export const propertyDecision = (decision) => {
     request(events.INPUT, 'input', {
