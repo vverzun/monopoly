@@ -9,6 +9,7 @@ const gameboard = [
 	{
 		id: '5c8c2324-7dbc-4292-bd59-d3754c1258c7',
 		type: 'go',
+		title: 'COLLECT $200 SALARY AS YOU PASS GO',
 		amount: 200,
 	},
 	{
@@ -31,6 +32,7 @@ const gameboard = [
 	{
 		id: 'ad8da153-4fc5-4ecf-9a0e-69defb5f0b43',
 		type: 'communityChest',
+		title: 'COMMUNITY CHEST',
 	},
 	{
 		id: '6351bd75-ad23-49a9-a87b-626a9fcee0ab',
@@ -52,6 +54,7 @@ const gameboard = [
 	{
 		id: '25de2832-31a7-4a85-9feb-156a934a6ecd',
 		type: 'tax',
+		title: 'INCOME TAX',
 		amount: -200,
 	},
 	{
@@ -88,6 +91,7 @@ const gameboard = [
 	{
 		id: '2cf7046b-7fae-427e-b9ac-cac9a25c9cdb',
 		type: 'chance',
+		title: 'CHANCE',
 	},
 	{
 		id: '5ad1e96c-ef9b-4ab5-96b2-f9202d4debd2',
@@ -128,6 +132,8 @@ const gameboard = [
 	{
 		id: '4db6bc2d-46d8-4ab4-ad2e-e6e6459e3b4f',
 		type: 'prison',
+		title: 'IN JAIL',
+		subTitle: 'JUST VISITING',
 		isPrisoner: false,
 	},
 	{
@@ -228,6 +234,7 @@ const gameboard = [
 	{
 		id: '6af30a51-4288-4a13-96ac-0f4a7ef8a7f0',
 		type: 'communityChest',
+		title: 'COMMUNITY CHEST',
 	},
 	{
 		id: '46b3736d-533d-41f1-a0ec-c5b7e2a75242',
@@ -265,7 +272,11 @@ const gameboard = [
 		hotel: 0,
 		isMortgaged: false,
 	},
-	{},
+	{
+		id: '84458bc8-f06d-4974-90f5-247619372eaf',
+		type: 'freeParking',
+		title: 'FREE PARKING'
+	},
 	{
 		id: '236a979f-9947-40ae-8955-c5f359c869f7',
 		type: 'street',
@@ -287,6 +298,7 @@ const gameboard = [
 	{
 		id: '2e383794-d593-4cc2-96e8-1b4662388720',
 		type: 'chance',
+		title: 'CHANCE'
 	},
 	{
 		id: 'fff666a1-7aeb-4e4f-bca6-83b0b7a798ca',
@@ -404,6 +416,7 @@ const gameboard = [
 	{
 		id: '27ab011c-97f0-403a-85ce-07e32c41c9d8',
 		type: 'prison',
+		title: 'GO TO JAIL',
 		isPrisoner: true,
 	},
 	{
@@ -445,6 +458,7 @@ const gameboard = [
 	{
 		id: '177127bf-8820-4359-be48-881ca8ac2e69',
 		type: 'communityChest',
+		title: 'COMMUNITY CHEST'
 	},
 	{
 		id: 'eb777fd4-6694-4b25-ad69-6d8f8576d9ee',
@@ -480,6 +494,7 @@ const gameboard = [
 	{
 		id: 'f7971bd5-9623-4c6d-8ece-9f0a3c4cb4d0',
 		type: 'chance',
+		title: 'CHANCE'
 	},
 	{
 		id: '261e177e-063d-494f-a032-918b83ea7a3d',
@@ -501,6 +516,7 @@ const gameboard = [
 	{
 		id: 'f05d4cf7-de20-45de-9787-ab0f711d63e4',
 		type: 'tax',
+		title: 'SUPER TAX',
 		tax: 100,
 	},
 	{

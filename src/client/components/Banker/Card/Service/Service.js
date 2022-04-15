@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import bulb from '../../../../resources/bulb.png';
 import tap from '../../../../resources/tap.png';
-import style from './style.scss';
+import style from './Service.scss';
 
 const Service = ({card}) => (
 	<Card className={style.card}>

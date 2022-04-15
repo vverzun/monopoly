@@ -10,6 +10,7 @@ const initialState = {
     players: [],
     playersCount: 0,
     readyCount: 0,
+    playersPositions: [],
     holdProperty: {} 
 };
 
@@ -23,7 +24,8 @@ const banker = (state = initialState, action) => {
         };  
         case START_GAME: return {
             ...state,
-            isGameStarted: action.payload.isGameStarted
+            isGameStarted: action.payload.isGameStarted,
+            playersPositions: action.payload.playersPositions
         };
         case HOLD_PROPERTY: return {
             ...state,

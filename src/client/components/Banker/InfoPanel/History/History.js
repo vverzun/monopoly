@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
-import style from './style.scss';
+import style from './History.scss';
 import uuid from 'uuid';
 
 const History = () => {

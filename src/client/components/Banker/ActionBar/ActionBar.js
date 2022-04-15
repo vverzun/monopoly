@@ -3,7 +3,7 @@ import MoveChip from './MoveChip/MoveChip';
 import Prison from './Prison/Prison';
 import Property from './Property/Property';
 import Box from '@material-ui/core/Box';
-import style from './style.scss';
+import style from './ActionBar.scss';
 
 const ActionBar = ({start, logged}) => (
     <>

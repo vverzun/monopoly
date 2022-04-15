@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import style from './style.scss';
+import style from './Street.scss';
 
 const Street = ({card}) => (
 	<Card className={style.card}>

@@ -1,6 +1,6 @@
 import utils from '../../utils/utils.mjs';
 import {assignPropertyNewOwner} from './players.mjs';
-import {validateBankrupt} from '../../Error/bankrupt.mjs';
+import {validateBankrupt} from '../../error/bankrupt.mjs';
 
 const applyBankrupt = (player, banker) => {
 	validateBankrupt(player);

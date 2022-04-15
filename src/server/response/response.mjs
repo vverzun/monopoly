@@ -1,7 +1,10 @@
 import socket from '../helpers/socket.mjs';
 import events from '../events.mjs';
 import actions from './actions.mjs';
-import {conditionedPlayers} from '../../lib/Banker/helpers/players.mjs';
+import {
+    conditionedPlayers,
+    definePlayersPositions
+} from '../../lib/Banker/helpers/players.mjs';
 import utils from '../../lib/utils/utils.mjs';
 
 const resObj = (actionType, payload) => (
@@ -59,9 +62,10 @@ const changeStatus = (id, status, value, banker) => {
     }
 };
 
-const startGame = () => {
+const startGame = (players) => {
     socket.broadcast(resObj(actions.START_GAME, {
-        isGameStarted: true
+        isGameStarted: true,
+        playersPositions: definePlayersPositions(players)
     }));
 };
 

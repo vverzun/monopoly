@@ -12,6 +12,13 @@ export const conditionedPlayers = (players, condition) => (
 	), 0)
 );
 
+export const definePlayersPositions = (players) => (
+	utils.mapToArray(players).map(player => ({
+		id: player.id,
+		position: player.position
+	}))
+);
+
 export const hasPropertyOwner = (players, propertyId) => {
 	for (const [, player] of players) {
 		if (player.property.has(propertyId)) return [false, player];

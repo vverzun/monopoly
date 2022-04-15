@@ -4,7 +4,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import style from './style.scss';
+import style from './ErrorAlert.scss';
 
 const ErrorAlert = () => {
     const {error} = useSelector(state => state.player);

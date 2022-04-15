@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import CloseIcon from '@material-ui/icons/Close';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import style from './style.scss';
+import style from './PropertyDialog.scss';
 import uuid from "uuid";
 
 const PropertyDialog = ({isOpen, handleOpen}) => {

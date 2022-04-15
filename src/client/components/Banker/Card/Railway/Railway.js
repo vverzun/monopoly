@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import train from '../../../../resources/train.png';
-import style from './style.scss';
+import style from './Railway.scss';
 
 const Railway = ({card}) => (
 	<Card className={style.card}>

@@ -2,6 +2,7 @@ import gameboard from '../../mock/gameboardMock.mjs';
 import events from '../../../server/events.mjs';
 
 const applyBoardMove = (banker, player, cell) => {
+    console.log(cell);
     const boardMoveEvents = {
         [events.PASS_GO]: (cellData) => 
             player.changeBalance(cellData.amount),

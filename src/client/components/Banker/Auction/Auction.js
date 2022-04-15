@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import style from './style.scss';
+import style from './Auction.scss';
 import {leaveAuction, bid} from '../../../request/request';
 
 const Auction = () => {

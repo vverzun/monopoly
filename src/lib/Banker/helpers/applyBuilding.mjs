@@ -1,4 +1,4 @@
-import validateBuilding from '../../Error/validateBuilding.mjs';
+import validateBuilding from '../../error/validateBuilding.mjs';
 
 const applyBuilding = (player, buildingData, capacity) => {
 	validateBuilding(buildingData, player.property, capacity);

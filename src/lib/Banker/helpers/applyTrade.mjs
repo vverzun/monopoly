@@ -1,4 +1,4 @@
-import validateTrade from '../../Error/validateTrade.mjs';
+import validateTrade from '../../error/validateTrade.mjs';
 
 const applyTrade = (player, newOwner, tradeData) => {
 	validateTrade(player, tradeData);

@@ -5,7 +5,7 @@ import InfoPanel from './InfoPanel/InfoPanel';
 import Input from './Input/Input';
 import Auction from './Auction/Auction';
 import Box from '@material-ui/core/Box';
-import style from './style.scss';
+import style from './Banker.scss';
 
 const Banker = () => {
     const {start, logged} = useSelector(state => ({

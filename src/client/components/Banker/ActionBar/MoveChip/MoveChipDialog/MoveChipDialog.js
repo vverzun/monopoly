@@ -5,7 +5,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';  
-import style from './style.scss';
+import style from './MoveChipDialog.scss';
 
 const MoveChipDialog = ({isOpen, handleOpen, handleChange, handleMove}) => (
     <Dialog open={isOpen} onClose={handleOpen}>

@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import policeman from '../../../../../resources/policeman.png';
-import style from './style.scss';
+import style from './PrisonAlert.scss';
 
 const PrisonAlert = () => {
     const {isPrisoner} = useSelector(state => state.player);

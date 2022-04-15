@@ -12,6 +12,7 @@ const initialState = {
     id: '',
     name: '',
     balance: 1500,
+    position: 0,
     property: [],
     isLoggedIn: false,
     freePrisonEscape: 0,

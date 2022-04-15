@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
-import style from './style.scss';
+import style from './PropertyDecision.scss';
 import {propertyDecision} from '../../../../request/request';
 
 const PropertyDecision = ({isOpen}) => {

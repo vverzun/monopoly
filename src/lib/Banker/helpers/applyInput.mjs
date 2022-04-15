@@ -1,5 +1,5 @@
 import events from '../../../server/events.mjs';
-import {validateDiceRoll, validateAuctionBid} from '../../Error/input.mjs';
+import {validateDiceRoll, validateAuctionBid} from '../../error/input.mjs';
 
 const applyInput = (player, input, banker) => {
 	const inputs = {

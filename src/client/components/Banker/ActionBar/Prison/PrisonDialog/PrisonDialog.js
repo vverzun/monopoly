@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import style from './style.scss';
+import style from './PrisonDialog.scss';
 
 const PrisonDialog = ({isOpen, handleOpen, handleEscape}) => {
     const {freePrisonEscape} = useSelector(state => state.player);

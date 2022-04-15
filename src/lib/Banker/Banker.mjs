@@ -1,7 +1,7 @@
 import Player from '../Player/Player.mjs';
 import Auction from '../Auction/Auction.mjs';
 import {addMembersToAuction, conditionedPlayers} from './helpers/players.mjs';
-import validateLogIn from '../Error/validateLogIn.mjs';
+import validateLogIn from '../error/validateLogIn.mjs';
 import applyBoardMove from './helpers/applyBoardMove.mjs';
 import applyProperty from './helpers/applyProperty.mjs';
 import applyAuctionLeave from './helpers/applyAuctionLeave.mjs';
@@ -53,7 +53,7 @@ class Banker {
 		if (conditionedPlayers(this.players, 'isReady') === this.players.size) {
 			this.isGameStarted = true;
 			this.logger.log(`Game has started.`);
-			response.startGame();	
+			response.startGame(this.players);	
 		};
 	};
 

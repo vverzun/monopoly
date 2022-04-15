@@ -1,0 +1,40 @@
+.cell {
+    width: 52px;
+    height: 86px;
+};
+
+.topRow, .bottomRow {
+    display: flex;
+
+    .cell {
+        @extend .cornerCell;
+    };
+};
+
+.bottomRow {
+    flex-direction: row-reverse;
+};
+
+.leftRow, .rightRow {
+    .cell {
+        width: 86px;
+        height: 52px;
+    };
+};
+
+.leftRow {
+    display: flex;
+    flex-direction: column-reverse;
+};
+
+.cornerCell {
+    &:last-child {
+        width: 86px;
+        height: 86px;
+    };
+    
+    &:first-child {
+        width: 86px;
+        height: 86px;
+    };
+};

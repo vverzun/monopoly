@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import style from './style.scss';
+import style from './ReadyCheck.scss';
 import {ready} from '../../../../request/request';
 
 const ReadyCheck = () => {

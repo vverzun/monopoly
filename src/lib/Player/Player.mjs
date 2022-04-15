@@ -4,7 +4,7 @@ import applyPrisonEscape from './helpers/applyPrisonEscape.mjs';
 import applyPropertyMortgage from './helpers/applyPropertyMortgage.mjs';
 import processRentAmount from './helpers/processRentAmount.mjs';
 import updateBuilding from './helpers/updateBulding.mjs';
-import {validateBankruptBalance} from '../Error/bankrupt.mjs';
+import {validateBankruptBalance} from '../error/bankrupt.mjs';
 import applyBankrupt from './helpers/applyBankrupt.mjs';
 import response from '../../server/response/response.mjs';
 
@@ -13,6 +13,7 @@ class Player {
 		this.id = id;
 		this.name = name;
 		this.balance = 1500;
+		this.position = 0;
 		this.property = new Map();
 		this.isLoggedIn = true;
 		this.isAuction = false;
