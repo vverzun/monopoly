@@ -32,8 +32,9 @@ class Banker {
 		return new Banker(logger);
 	};
 	
-	processBoardMove(player, cell) {
-		applyBoardMove(this, player, cell);
+	processBoardMove(player, diceRoll) {
+		applyBoardMove(this, player, diceRoll);
+		player.move(diceRoll, this.players);
 	};
 
 	addPlayer(name, ws) {
@@ -62,8 +63,8 @@ class Banker {
 		addMembersToAuction(this);
 	};
 
-	processProperty(player, property) {
-		applyProperty(player, property, this);
+	processProperty(player, property, diceAmount) {
+		applyProperty(player, property, diceAmount, this);
 	};
 
 	processPlayerLeaveAuction(player) {

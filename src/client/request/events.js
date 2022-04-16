@@ -3,7 +3,6 @@ const events = {
     READY: 'ready',
     BOARD_MOVE: 'boardMove',
     INPUT: 'input',
-    DICE_ROLL: 'diceRoll',
     PROPERTY_DECISION: 'propertyDecision',
     BID: 'bid',
     LEAVE_AUCTION: 'leaveAuction',

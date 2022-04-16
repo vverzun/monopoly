@@ -1,11 +1,14 @@
+import gameboard from '../../lib/mock/gameboardMock.mjs';
 //-----actions-----//
 const UPDATE_LOBBY_INFO = 'updateLobbyInfo';
 const START_GAME = 'startGame';
+const MOVE = 'move';
 const HOLD_PROPERTY = 'holdProperty';
 const UPDATE_PLAYER_BALANCE = 'updatePlayerBalance';
-
 //-----reducer-----//
 const initialState = {
+    gameboard: gameboard,
+    
     isGameStarted: false,
     players: [],
     playersCount: 0,
@@ -25,6 +28,10 @@ const banker = (state = initialState, action) => {
         case START_GAME: return {
             ...state,
             isGameStarted: action.payload.isGameStarted,
+            playersPositions: action.payload.playersPositions
+        };
+        case MOVE: return {
+            ...state,
             playersPositions: action.payload.playersPositions
         };
         case HOLD_PROPERTY: return {

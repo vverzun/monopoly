@@ -16,8 +16,8 @@ export const ready = () => {
     request(events.READY);
 };
 
-export const boardMove = (cell) => {
-    request(events.BOARD_MOVE, 'cell', cell);
+export const boardMove = (diceRoll) => {
+    request(events.BOARD_MOVE, 'diceRoll', diceRoll);
 };
 
 export const escapePrison = (escapeType) => {

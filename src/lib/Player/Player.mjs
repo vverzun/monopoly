@@ -97,6 +97,15 @@ class Player {
 		this.logger.log(`${this.name}'s amount changed by ${amount}`);
 		response.changeBalance(this.id, this.balance);
 	};
+
+	move(diceRoll, players) {
+		if ((this.position + diceRoll) % 40 <= this.position) {
+			this.changeBalance(200);
+		};
+
+		this.position = (this.position + diceRoll) % 40;
+		response.move(players);
+	};
 };
 
 export default Player;

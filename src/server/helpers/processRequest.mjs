@@ -11,7 +11,7 @@ const processRequest = (data, banker, ws) => {
 			banker.setPlayerReady(player, 'isReady', true),
 
 		[events.BOARD_MOVE]: () => 
-			banker.processBoardMove(player, data.cell),
+			banker.processBoardMove(player, data.diceRoll),
 		
 		[events.LEAVE_AUCTION]: () =>
 			banker.processPlayerLeaveAuction(player),

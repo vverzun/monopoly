@@ -1,13 +1,8 @@
 import events from '../../../server/events.mjs';
-import {validateDiceRoll, validateAuctionBid} from '../../error/input.mjs';
+import {validateAuctionBid} from '../../error/input.mjs';
 
 const applyInput = (player, input, banker) => {
 	const inputs = {
-		[events.DICE_ROLL]: () => {
-			validateDiceRoll(input.diceAmount);
-			player.payRent(banker, banker.holdProperty, banker.holdOwner, input.diceAmount);
-		},
-
 		[events.CARD]: () =>
 			player.processCard(banker.players, input.card),
 

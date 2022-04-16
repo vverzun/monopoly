@@ -15,6 +15,7 @@ export const conditionedPlayers = (players, condition) => (
 export const definePlayersPositions = (players) => (
 	utils.mapToArray(players).map(player => ({
 		id: player.id,
+		name: player.name,
 		position: player.position
 	}))
 );

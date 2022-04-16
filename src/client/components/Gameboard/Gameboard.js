@@ -1,25 +1,30 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import Row from './Row/Row';
 import DiceRoll from './DiceRoll/DiceRoll';
 import Paper from '@material-ui/core/Paper';
-import gameboard from '../../../lib/mock/gameboardMock.mjs';
 import style from './Gameboard.scss';
+import gameboard from '../../../lib/mock/gameboardMock.mjs';
 
-const top = gameboard.slice(20, 31);
-const right = gameboard.slice(31, 40);
-const bottom = gameboard.slice(0, 11);
-const left = gameboard.slice(11, 20);
+const Gameboard = () => {
+    const playersPositions = useSelector(state => state.banker.playersPositions);
+    const boardWithPlayers = JSON.parse(JSON.stringify(gameboard));
 
-const Gameboard = () => (
-    <Paper className={style.container}>
-        <Row cells={top} type={'top'}/>
-        <div className={style.innerContainer}>
-            <Row cells={left} type={'left'}/>
-            <DiceRoll/>
-            <Row cells={right} type={'right'}/>
-        </div>
-        <Row cells={bottom} type={'bottom'}/>
-    </Paper>
-);
+    playersPositions.forEach(player => (
+        boardWithPlayers[player.position].players.push(player))
+    );
+    
+    return (
+        <Paper className={style.container}>
+            <Row cells={boardWithPlayers.slice(20, 31)} type={'top'}/>
+            <div className={style.innerContainer}>
+                <Row cells={boardWithPlayers.slice(11, 20)} type={'left'}/>
+                <DiceRoll/>
+                <Row cells={boardWithPlayers.slice(31, 40)} type={'right'}/>
+            </div>
+            <Row cells={boardWithPlayers.slice(0, 11)} type={'bottom'}/>
+        </Paper>
+    );
+};
 
 export default Gameboard;

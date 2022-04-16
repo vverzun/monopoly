@@ -9,7 +9,7 @@ const MoveChip = () => {
     const handleChange = useCallback((e) => setCell(e.target.value), []);
     const handleOpen = useCallback(() => setOpen(!isOpen), [isOpen]);
     const handleMove = useCallback(() => {
-        boardMove(cell);
+        boardMove(+cell);
         handleOpen();
     }, [cell]);
     

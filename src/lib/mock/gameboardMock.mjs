@@ -11,6 +11,7 @@ const gameboard = [
 		type: 'go',
 		title: 'COLLECT $200 SALARY AS YOU PASS GO',
 		amount: 200,
+		players: []
 	},
 	{
 		id: '4e3c92c5-e0ad-46fb-98ed-bc0a90c08c10',
@@ -28,11 +29,13 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: 'ad8da153-4fc5-4ecf-9a0e-69defb5f0b43',
 		type: 'communityChest',
 		title: 'COMMUNITY CHEST',
+		players: []
 	},
 	{
 		id: '6351bd75-ad23-49a9-a87b-626a9fcee0ab',
@@ -50,12 +53,14 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '25de2832-31a7-4a85-9feb-156a934a6ecd',
 		type: 'tax',
 		title: 'INCOME TAX',
 		amount: -200,
+		players: []
 	},
 	{
 		id: '48a0d64b-358e-4a2d-8a25-08bea25b5961',
@@ -69,6 +74,7 @@ const gameboard = [
 		mortgage: 100,
 		rent: [25, 50, 100, 200],
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: 'b95e0aef-0b8a-4d2b-aa39-1b9a660b1cf5',
@@ -87,11 +93,13 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '2cf7046b-7fae-427e-b9ac-cac9a25c9cdb',
 		type: 'chance',
 		title: 'CHANCE',
+		players: []
 	},
 	{
 		id: '5ad1e96c-ef9b-4ab5-96b2-f9202d4debd2',
@@ -110,6 +118,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '32c9c9f4-59ed-4521-8b71-c87764e5f0fc',
@@ -128,6 +137,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '4db6bc2d-46d8-4ab4-ad2e-e6e6459e3b4f',
@@ -135,6 +145,7 @@ const gameboard = [
 		title: 'IN JAIL',
 		subTitle: 'JUST VISITING',
 		isPrisoner: false,
+		players: []
 	},
 	{
 		id: '2f8e385a-f1f2-482e-96d3-4419c28f9c9a',
@@ -153,6 +164,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '4a0b03fd-5263-4664-b7c0-aff4a0c4aa0a',
@@ -163,6 +175,7 @@ const gameboard = [
 		price: 150,
 		mortgage: 75,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '4519b744-30d7-4daf-b4ef-232328f90b84',
@@ -181,6 +194,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '32676efe-55da-4982-afcb-6ef5c00a58a8',
@@ -199,6 +213,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '9914f341-200b-4a3d-b648-de4d24942708',
@@ -212,6 +227,7 @@ const gameboard = [
 		mortgage: 100,
 		rent: [25, 50, 100, 200],
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '8c960fe6-a7ec-4f6f-95cb-96fb41a549d1',
@@ -230,11 +246,13 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '6af30a51-4288-4a13-96ac-0f4a7ef8a7f0',
 		type: 'communityChest',
 		title: 'COMMUNITY CHEST',
+		players: []
 	},
 	{
 		id: '46b3736d-533d-41f1-a0ec-c5b7e2a75242',
@@ -253,6 +271,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: 'f91bd417-bd3c-4134-97df-0b0256bdd236',
@@ -271,11 +290,13 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '84458bc8-f06d-4974-90f5-247619372eaf',
 		type: 'freeParking',
-		title: 'FREE PARKING'
+		title: 'FREE PARKING',
+		players: []
 	},
 	{
 		id: '236a979f-9947-40ae-8955-c5f359c869f7',
@@ -294,11 +315,13 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '2e383794-d593-4cc2-96e8-1b4662388720',
 		type: 'chance',
-		title: 'CHANCE'
+		title: 'CHANCE',
+		players: []
 	},
 	{
 		id: 'fff666a1-7aeb-4e4f-bca6-83b0b7a798ca',
@@ -317,6 +340,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '5c02e291-af0e-4ea9-85f3-24c661d36935',
@@ -335,6 +359,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: 'dcfffbcb-61b8-459c-8adb-dce44bfef750',
@@ -348,6 +373,7 @@ const gameboard = [
 		mortgage: 100,
 		rent: [25, 50, 100, 200],
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '1a2a7f73-5a91-4c68-8da9-3a9249074aee',
@@ -366,6 +392,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '609bcab9-e29f-4a46-9add-5024337066da',
@@ -384,6 +411,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '7956fc9c-1990-48fa-a423-472c1a33f166',
@@ -394,6 +422,7 @@ const gameboard = [
 		price: 150,
 		mortgage: 75,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '1a1649e6-a5b9-4558-a00f-49d9bcc7e45d',
@@ -412,12 +441,14 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '27ab011c-97f0-403a-85ce-07e32c41c9d8',
 		type: 'prison',
 		title: 'GO TO JAIL',
 		isPrisoner: true,
+		players: []
 	},
 	{
 		id: '5ae2d918-0725-4c3c-a272-49d602cddeca',
@@ -436,6 +467,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '7cde65a8-b06d-4c64-b464-97cf04b138f4',
@@ -454,11 +486,13 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '177127bf-8820-4359-be48-881ca8ac2e69',
 		type: 'communityChest',
-		title: 'COMMUNITY CHEST'
+		title: 'COMMUNITY CHEST',
+		players: []
 	},
 	{
 		id: 'eb777fd4-6694-4b25-ad69-6d8f8576d9ee',
@@ -477,6 +511,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: '04de456f-53b2-4c85-9c97-12791331a20c',
@@ -490,11 +525,13 @@ const gameboard = [
 		mortgage: 100,
 		rent: [25, 50, 100, 200],
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: 'f7971bd5-9623-4c6d-8ece-9f0a3c4cb4d0',
 		type: 'chance',
-		title: 'CHANCE'
+		title: 'CHANCE',
+		players: []
 	},
 	{
 		id: '261e177e-063d-494f-a032-918b83ea7a3d',
@@ -512,12 +549,14 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 	{
 		id: 'f05d4cf7-de20-45de-9787-ab0f711d63e4',
 		type: 'tax',
 		title: 'SUPER TAX',
 		tax: 100,
+		players: []
 	},
 	{
 		id: '42adbb1a-e6bb-4ab8-89f4-504ef9259273',
@@ -535,6 +574,7 @@ const gameboard = [
 		house: 0,
 		hotel: 0,
 		isMortgaged: false,
+		players: []
 	},
 ];
 

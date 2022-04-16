@@ -69,6 +69,12 @@ const startGame = (players) => {
     }));
 };
 
+const move = (players) => {
+    socket.broadcast(resObj(actions.MOVE, {
+        playersPositions: definePlayersPositions(players)
+    }));
+};
+
 const changeBalance = (id, balance) => {
     response(id, actions.CHANGE_BALANCE, {
         balance: balance
@@ -134,6 +140,7 @@ export default {
     addPlayer: addPlayer,
     changeStatus: changeStatus,
     startGame: startGame,
+    move: move,
     changeBalance: changeBalance,
     holdProperty: holdProperty,
     setInput: setInput,

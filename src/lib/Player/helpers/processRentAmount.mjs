@@ -5,8 +5,6 @@ import {isColorGroupComplete} from './colorGroup.mjs';
 const processRentAmount = (property, owner, player, diceAmount) => {
 	if (owner.property.get(property.id).isMortgaged) {
 		player.logger.log(`${property.title} is mortgaged, the rent is free!`);
-	} else if (property.type === 'service' && !diceAmount) {
-		player.setInput(player.id, events.DICE_ROLL, true);
 	} else {
 		let amount = calculateRent(property, owner.property, diceAmount);
 

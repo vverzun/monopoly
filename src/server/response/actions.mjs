@@ -15,6 +15,7 @@ const actions = {
     START_GAME: 'startGame',
     HOLD_PROPERTY: 'holdProperty',
     UPDATE_PLAYER_BALANCE: 'updatePlayerBalance',
+    MOVE: 'move',
     //auction
     SET_UP_AUCTION: 'setUpAuction',
     APPLY_BID: 'applyBid'
