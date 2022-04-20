@@ -13,7 +13,7 @@ const ErrorAlert = () => {
     useEffect(() => setOpen(Boolean(error)), [error]);
     
     return (
-        <Collapse in={isOpen} className={style.test}>
+        <Collapse in={isOpen} className={style.error}>
             <Alert severity='error' action={
                 <IconButton size='small'onClick={handleOpen}>
                     <CloseIcon/>

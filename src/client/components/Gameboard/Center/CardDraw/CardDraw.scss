@@ -1,0 +1,19 @@
+.communityChest {
+    @extend .card;
+    margin-bottom: -100px;
+};
+
+.chance {
+    @extend .card;
+    align-self: flex-end;
+};
+
+.card {
+    width: 90px;
+    height: 130px;
+    transform: rotate(45deg);
+    
+    img {
+        width: 90%;
+    };
+};

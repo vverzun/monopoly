@@ -1,5 +1,4 @@
 .infoPanel {
     display: flex;
-    justify-content: space-evenly;
-    width: 700px;
+    flex-flow: column;
 };

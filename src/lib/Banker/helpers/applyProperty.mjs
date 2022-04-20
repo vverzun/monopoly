@@ -7,9 +7,8 @@ const applyProperty = (player, property, diceAmount, banker) => {
 	if (isAvailable) {
 		banker.holdProperty = property;
 		response.holdProperty(player.id, property);
-		player.setInput('propertyDecision', true);
+		player.setInput('propertyDecision');
 	} else {
-		banker.holdOwner = owner;
 		player.payRent(property, owner, diceAmount);
 	}
 };

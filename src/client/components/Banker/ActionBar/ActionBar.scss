@@ -1,6 +1,4 @@
 .actionBar {
     display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    margin-top: 5rem;
+    flex-flow: column;
 };

@@ -1,4 +1,3 @@
-import events from '../../../server/events.mjs';
 import {countPlayerPropertyType} from '../../Banker/helpers/players.mjs';
 import {isColorGroupComplete} from './colorGroup.mjs';
 

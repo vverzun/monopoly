@@ -31,17 +31,17 @@ export const propertyDecision = (decision) => {
     });
 };
 
+export const cardDraw = (cardType) => {
+    request(events.INPUT, 'input', {
+        type: events.CARD_DRAW,
+        cardType: cardType
+    });
+};
+
 export const bid = (value) => {
     request(events.INPUT, 'input', {
         type: events.BID,
         bid: value
-    });
-};
-
-export const diceRoll = (amount) => {
-    request(events.INPUT, 'input', {
-        type: events.DICE_ROLL,
-        diceAmount: amount
     });
 };
 

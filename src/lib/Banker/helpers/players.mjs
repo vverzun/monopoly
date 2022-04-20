@@ -1,4 +1,5 @@
 import utils from '../../utils/utils.mjs';
+import gameboard from '../../mock/gameboardMock.mjs';
 
 export const isPlayerHasAnyBuildings = (player) => (
 	utils.mapToArray(player.property).every((property) => (
@@ -53,4 +54,15 @@ export const ownPropertyPrice = (card, property) => (
 		return amount;
 	}, 0)
 );
+
+export const findNearestTargetCell = (position, target) => {
+	let targetPosition = position;
+
+	while (gameboard[targetPosition].type !== target) {
+		targetPosition = (targetPosition + 1) % 40;
+	};
+
+	return targetPosition;
+};
+
 

@@ -92,10 +92,9 @@ const holdProperty = (id, property) => {
     });
 };
 
-const setInput = (id, inputType, isInput) => {
+const setInput = (id, inputType) => {
     response(id, actions.PROMPT_INPUT, {
-        type: inputType,
-        isInput: isInput
+        inputType: inputType
     });
 };
 
@@ -124,6 +123,12 @@ const useEscapeCard = (id, freePrisonEscape) => {
     });
 };
 
+const popCard = (id, card) => {
+    response(id, actions.POP_CARD, {
+        card: card
+    });
+};
+
 const log = (log) => {
     socket.broadcast(resObj(actions.ADD_NEW_LOG, {
         log: log
@@ -148,6 +153,7 @@ export default {
     startAuction: startAuction,
     applyBid: applyBid,
     useEscapeCard: useEscapeCard,
+    popCard: popCard,
     log: log,
     clearLogger: clearLogger
 };

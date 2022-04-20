@@ -1,4 +1,4 @@
-import applyCard from './helpers/applyCard.mjs';
+import applyCardDraw from './helpers/applyCardDraw.mjs';
 import applyPropertyDecision from './helpers/applyPropertyDecision.mjs';
 import applyPrisonEscape from './helpers/applyPrisonEscape.mjs';
 import applyPropertyMortgage from './helpers/applyPropertyMortgage.mjs';
@@ -21,10 +21,8 @@ class Player {
 		this.isPrisoner = false;
 		this.freePrisonEscape = 0;
 		this.nextRentTimes = 0;
-		this.input = {
-			type: '',
-			isInput: false,
-		};
+		this.card = {},
+		this.inputType = '',
 		this.logger = logger;
 		this.payment = {
 			lastPayedTo: '',
@@ -47,8 +45,9 @@ class Player {
 		applyPropertyDecision(decision, this, banker);
 	};
 
-	processCard(players, card) {
-		applyCard(players, card, this);
+	processCardDraw(cardType, banker) {
+		applyCardDraw(cardType, banker, this);
+		response.popCard(this.id, this.card);
 	};
 
 	processPropertyMortgage(propertyId, isMortgaged) {
@@ -66,10 +65,9 @@ class Player {
 		processRentAmount(property, owner, this, diceAmount);
 	};
 
-	setInput(inputType, isInput) {
-		this.input.type = inputType;
-		this.input.isInput = isInput;
-		response.setInput(this.id, inputType, isInput);
+	setInput(inputType) {
+		this.inputType = inputType;
+		response.setInput(this.id, inputType);
 	};
 
 	changeStatus(status, value, banker) {
@@ -98,12 +96,14 @@ class Player {
 		response.changeBalance(this.id, this.balance);
 	};
 
-	move(diceRoll, players) {
-		if ((this.position + diceRoll) % 40 <= this.position) {
+	move(diceRoll, players, isGoBonus) {
+		const nextPosition = (this.position + diceRoll) % 40; 
+		
+		if (nextPosition < this.position && isGoBonus) {
 			this.changeBalance(200);
 		};
 
-		this.position = (this.position + diceRoll) % 40;
+		this.position = nextPosition;
 		response.move(players);
 	};
 };

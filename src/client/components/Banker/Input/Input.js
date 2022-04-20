@@ -4,12 +4,12 @@ import PropertyDecision from './PropertyDecision/PropertyDecision';
 import events from '../../../request/events';
 
 const Input = () => {
-    const {input} = useSelector(state => state.player);
+    const inputType = useSelector(state => state.player.inputType);
 
     return (
         <>
             <PropertyDecision
-                isOpen={input.type === events.PROPERTY_DECISION}
+                isOpen={inputType === events.PROPERTY_DECISION}
             />
         </>        
     );

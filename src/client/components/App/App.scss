@@ -1,10 +1,16 @@
 .container {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-flow: column;
+    width: 1500px;
     
     .logo {
         width: 30%;
-        margin-bottom: 5%;   
+        margin-bottom: 40px;   
+    };
+
+    .interface {
+        display: flex;
     };
 };

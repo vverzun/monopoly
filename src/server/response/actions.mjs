@@ -6,6 +6,7 @@ const actions = {
     USE_PRISON_ESCAPE_CARD: 'usePrisonEscapeCard',
     PROMPT_INPUT: 'promptInput',
     BUY_PROPERTY: 'buyProperty',
+    POP_CARD: 'popCard',
     ERROR: 'error',
     //logger
     ADD_NEW_LOG: 'addNewLog',

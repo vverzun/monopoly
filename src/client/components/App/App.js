@@ -23,8 +23,10 @@ const App = () => {
         <Box className={style.container}>
             <img className={style.logo} src={monopolyLogo} alt='monopoly logo'/>
             <LogIn/>
-            <Gameboard/>
-            <Banker/>
+            <Box className={style.interface}>
+                <Gameboard/>
+                <Banker/>
+            </Box>
             <ErrorAlert/>
         </Box>
     );

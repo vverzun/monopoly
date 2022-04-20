@@ -1,9 +1,9 @@
 import utils from '../../utils/utils.mjs';
 
-const changePlayerBalances = (players, card, self) => {
+const changePlayerBalances = (card, players, self) => {
 	if (card.toEach || card.fromEach) {
 		calculateBalances(players, card, self);
-	} else self.changeBalance(card.price);
+	} else self.changeBalance(card.amount);
 };
 
 const calculateBalances = (players, card, self) => {
@@ -14,13 +14,13 @@ const calculateBalances = (players, card, self) => {
 };
 
 const payPlayer = (player, card, self) => {
-	self.changeBalance(-Math.abs(card.price), player.id);
-	player.changeBalance(card.price, player.lastPayedTo);
+	self.changeBalance(-Math.abs(card.amount), player.id);
+	player.changeBalance(card.amount, player.lastPayedTo);
 };
 
 const receivePayment = (player, card, self) => {
-	self.changeBalance(card.price, self.lastPayedTo);
-	player.changeBalance(-Math.abs(card.price), self.id);
+	self.changeBalance(card.amount, self.lastPayedTo);
+	player.changeBalance(-Math.abs(card.amount), self.id);
 };
 
 export default changePlayerBalances;

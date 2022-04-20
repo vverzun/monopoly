@@ -3,11 +3,11 @@ import {validateAuctionBid} from '../../error/input.mjs';
 
 const applyInput = (player, input, banker) => {
 	const inputs = {
-		[events.CARD]: () =>
-			player.processCard(banker.players, input.card),
-
 		[events.PROPERTY_DECISION]: () =>
 			player.processPropertyDecision(input.decision, banker),
+
+		[events.CARD_DRAW]: () =>
+			player.processCardDraw(input.cardType, banker),
 
 		[events.BID]: () => {
 			validateAuctionBid(input.bid, banker.auction.highestBid);

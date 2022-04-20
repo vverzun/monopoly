@@ -1,0 +1,32 @@
+.container {
+    .closeIcon {
+        position: absolute;
+        right: 0;
+    };
+
+    .card {
+        margin: 30px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        
+        .header {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        };
+
+        .textContainer {
+            display: flex;
+            padding: 20px;
+            align-items: center;
+            text-align: center;
+            border: thick double black;
+            height: 150px;
+
+            img {
+                width: 40%;
+                opacity: 80%;  
+            };
+        };
+    };
+};

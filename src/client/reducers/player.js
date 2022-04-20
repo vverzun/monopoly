@@ -4,7 +4,8 @@ const CHANGE_BALANCE = 'changeBalance';
 const CHANGE_STATUS = 'changeStatus';
 const USE_PRISON_ESCAPE_CARD = 'usePrisonEscapeCard';
 const PROMPT_INPUT = 'promptInput';
-const BUY_PROPERTY = 'buyProperty'
+const BUY_PROPERTY = 'buyProperty';
+const POP_CARD = 'popCard';
 const ERROR = 'error';
 
 //-----reducer-----//
@@ -19,10 +20,8 @@ const initialState = {
     isAuction: false,
     isReady: false,
     isPrisoner: false,
-    input: {
-        type: '',
-        isInput: false
-    },
+    card: false,
+    inputType: '',
     error: ''
 };
 
@@ -48,14 +47,15 @@ const player = (state = initialState, action) => {
         };
         case PROMPT_INPUT: return {
             ...state,
-            input: {
-                type: action.payload.type,
-                isInput: action.payload.isInput
-            }
+            inputType: action.payload.inputType
         };
         case BUY_PROPERTY: return {
             ...state,
             property: [...state.property, action.payload.property]
+        };
+        case POP_CARD: return {
+            ...state,
+            card: action.payload.card
         };
         case ERROR: return {
             ...state,

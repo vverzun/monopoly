@@ -17,7 +17,6 @@ class Banker {
 		this.players = new Map();
 		this.isGameStarted = false;
 		this.holdProperty = {};
-		this.holdOwner = '';
 		this.auction = {
 			auctionData: {},
 		};
@@ -32,9 +31,9 @@ class Banker {
 		return new Banker(logger);
 	};
 	
-	processBoardMove(player, diceRoll) {
+	processBoardMove(player, diceRoll, isGoBonus = true) {
 		applyBoardMove(this, player, diceRoll);
-		player.move(diceRoll, this.players);
+		player.move(diceRoll, this.players, isGoBonus);
 	};
 
 	addPlayer(name, ws) {
