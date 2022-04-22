@@ -3,6 +3,19 @@
 	height: 280px;
 	font-family: 'Kabel';
 
+	.buildingContainer {
+		display: flex;
+		justify-content: center;
+		width: 150px;
+		position: absolute;
+		margin-left: 15px;
+		margin-top: -15px;
+		
+		img {
+			width: 30px;
+		};
+	};
+		
 	.cardContainer {
 		@extend .box;
 		border: 2px solid black;

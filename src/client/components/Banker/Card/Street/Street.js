@@ -1,11 +1,35 @@
 import React from 'react';
+import CardAction from '../CardAction/CardAction';
 import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import style from './Street.scss';
+import house from '../../../../resources/house.png';
+import hotel from '../../../../resources/hotel.png';
+import uuid from "uuid";
+
+const Building = ({card}) => {
+	const building = [];
+
+	for (let i = 0; i < card.house; i++) {
+		building.push(<img key={uuid.v4()} alt='house' src={house}/>)
+	};
+
+	for (let i = 0; i < card.hotel; i++) {
+		building.push(<img key={uuid.v4()} alt='hotel' src={hotel}/>)
+	};
+
+	return (
+		<Box className={style.buildingContainer}>
+			{building}
+		</Box>
+	);
+};
 
 const Street = ({card}) => (
 	<Card className={style.card}>
+		<CardAction card={card}/>
+		<Building card={card}/>
 		<Box className={style.cardContainer}>
 			<Box className={style.cardHeader} style={{backgroundColor: card.color}}>
 				<Typography className={style.caption}>TITLE DEED</Typography>

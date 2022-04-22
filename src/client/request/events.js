@@ -6,6 +6,8 @@ const events = {
     PROPERTY_DECISION: 'propertyDecision',
     CARD_DRAW: 'cardDraw',
     BID: 'bid',
+    BUILDING: 'building',
+    MORTGAGE: 'mortgage',
     LEAVE_AUCTION: 'leaveAuction',
     ESCAPE_PRISON: 'escapePrison',
 };

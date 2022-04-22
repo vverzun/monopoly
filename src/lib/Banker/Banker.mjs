@@ -75,7 +75,7 @@ class Banker {
 	};
 
 	processBuilding(player, buildingData) {
-		applyBuilding(player, buildingData, this.capacity);
+		applyBuilding(player, buildingData, this.capacity, this.players);
 	};
 
 	processInput(player, input) {

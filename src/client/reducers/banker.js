@@ -5,6 +5,7 @@ const START_GAME = 'startGame';
 const MOVE = 'move';
 const HOLD_PROPERTY = 'holdProperty';
 const UPDATE_PLAYER_BALANCE = 'updatePlayerBalance';
+const UPDATE_GAMEBOARD_BUILDINGS = 'updateGameboardBuildings';
 //-----reducer-----//
 const initialState = {
     gameboard: gameboard,
@@ -14,6 +15,7 @@ const initialState = {
     playersCount: 0,
     readyCount: 0,
     playersPositions: [],
+    playersBuildings: [],
     holdProperty: {} 
 };
 
@@ -46,6 +48,10 @@ const banker = (state = initialState, action) => {
                     balance: action.payload.balance
                 } : player
             ))
+        };
+        case UPDATE_GAMEBOARD_BUILDINGS: return {
+            ...state,
+            playersBuildings: action.payload.playersBuildings
         };
         default: return state;
     };

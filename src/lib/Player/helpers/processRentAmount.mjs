@@ -35,16 +35,16 @@ const calculateRailwayRent = (id, property) => (
 const calculateStreetRent = (id, property) => {
 	let amount = 0;
 
-	if (property.get(id).houses) {
-		amount += property.get(id).houseRent[property.get(id).houses - 1];
+	if (property.get(id).house) {
+		amount += property.get(id).houseRent[property.get(id).house - 1];
 	}
-	if (property.get(id).hotels) {
+	else if (property.get(id).hotel) {
 		amount += property.get(id).hotelRent;
+	} else {
+		amount = isColorGroupComplete(id, property) ? property.get(id).rent * 2 : property.get(id).rent
 	}
 
-	if (!amount) amount = property.get(id).rent;
-
-	return isColorGroupComplete(id, property) ? amount * 2 : amount;
+	return amount;
 };
 
 const calculateServiceRent = (diceAmount, property) => {

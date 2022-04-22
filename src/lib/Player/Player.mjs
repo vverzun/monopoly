@@ -75,17 +75,18 @@ class Player {
 		response.changeStatus(this.id, status, value, banker);
 	};
 
-	buyBuilding({building, propertyId}) {
-		const property = this.property.get(propertyId);
-		updateBuilding(building, property, 'buy');
-		this.changeBalance(-Math.abs(property.buildingPrice));
-		this.logger.log(`${this.name} bought a ${building} on ${property.title}`);
+	buyBuilding({building, propertyId}, players) {
+		updateBuilding(building, this.property.get(propertyId), 'buy');
+		response.applyBuilding(this.id, this.property, players);
+		this.changeBalance(-Math.abs(this.property.get(propertyId).buildingPrice));
+		this.logger.log(`${this.name} bought a ${building} on ${this.property.get(propertyId).title}`);
 	};
 
-	sellBuilding({building, propertyId}) {
+	sellBuilding({building, propertyId}, players) {
 		updateBuilding(building, this.property.get(propertyId), 'sell');
-		this.changeBalance(property.buildingPrice / 2);
-		this.logger.log(`${this.name} sold a ${building} on ${property.title}`);
+		response.applyBuilding(this.id, this.property, players);
+		this.changeBalance(this.property.get(propertyId).buildingPrice / 2);
+		this.logger.log(`${this.name} sold a ${building} on ${this.property.get(propertyId).title}`);
 	};
 
 	changeBalance(amount, payTo = 'bank') {

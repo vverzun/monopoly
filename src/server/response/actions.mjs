@@ -7,6 +7,7 @@ const actions = {
     PROMPT_INPUT: 'promptInput',
     BUY_PROPERTY: 'buyProperty',
     POP_CARD: 'popCard',
+    UPDATE_PROPERTY: 'updateProperty', //
     ERROR: 'error',
     //logger
     ADD_NEW_LOG: 'addNewLog',
@@ -17,6 +18,7 @@ const actions = {
     HOLD_PROPERTY: 'holdProperty',
     UPDATE_PLAYER_BALANCE: 'updatePlayerBalance',
     MOVE: 'move',
+    UPDATE_GAMEBOARD_BUILDINGS: 'updateGameboardBuildings', //
     //auction
     SET_UP_AUCTION: 'setUpAuction',
     APPLY_BID: 'applyBid'

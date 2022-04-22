@@ -3,7 +3,8 @@ import events from '../events.mjs';
 import actions from './actions.mjs';
 import {
     conditionedPlayers,
-    definePlayersPositions
+    definePlayersPositions,
+    definePlayersBuildings
 } from '../../lib/Banker/helpers/players.mjs';
 import utils from '../../lib/utils/utils.mjs';
 
@@ -129,6 +130,16 @@ const popCard = (id, card) => {
     });
 };
 
+const applyBuilding = (id, property, players) => {
+    response(id, actions.UPDATE_PROPERTY, {
+        property: utils.mapToArray(property)
+    });
+    
+    socket.broadcast(resObj(actions.UPDATE_GAMEBOARD_BUILDINGS, {
+        playersBuildings: definePlayersBuildings(players)
+    }));
+};
+
 const log = (log) => {
     socket.broadcast(resObj(actions.ADD_NEW_LOG, {
         log: log
@@ -154,6 +165,7 @@ export default {
     applyBid: applyBid,
     useEscapeCard: useEscapeCard,
     popCard: popCard,
+    applyBuilding: applyBuilding,
     log: log,
     clearLogger: clearLogger
 };

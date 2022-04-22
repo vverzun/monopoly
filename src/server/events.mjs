@@ -18,7 +18,6 @@ const events = {
 	PING: 'ping',                                 
 	PONG: 'pong', 
 	
-	//CARD: 'cardNumber',
 	TRADE: 'trade', 
 	BUILDING: 'building', 
 	MORTGAGE: 'mortgage', 

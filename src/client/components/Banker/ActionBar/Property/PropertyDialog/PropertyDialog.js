@@ -11,12 +11,11 @@ import uuid from "uuid";
 
 const PropertyDialog = ({isOpen, handleOpen}) => {
     const {property} = useSelector(state => state.player);
+    
     const memoProperty = useMemo(() => (
         property.map(card => (
-            <Card
-                key={uuid.v4()}
-                card={card}
-            />))
+                <Card key={uuid.v4()} card={card}/>            
+        ))
     ), [property]);
 
     return (

@@ -6,6 +6,7 @@ const USE_PRISON_ESCAPE_CARD = 'usePrisonEscapeCard';
 const PROMPT_INPUT = 'promptInput';
 const BUY_PROPERTY = 'buyProperty';
 const POP_CARD = 'popCard';
+const UPDATE_PROPERTY = 'updateProperty';
 const ERROR = 'error';
 
 //-----reducer-----//
@@ -52,6 +53,10 @@ const player = (state = initialState, action) => {
         case BUY_PROPERTY: return {
             ...state,
             property: [...state.property, action.payload.property]
+        };
+        case UPDATE_PROPERTY: return {
+            ...state,
+            property: [...action.payload.property]
         };
         case POP_CARD: return {
             ...state,

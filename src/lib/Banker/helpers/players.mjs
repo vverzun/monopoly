@@ -21,6 +21,31 @@ export const definePlayersPositions = (players) => (
 	}))
 );
 
+export const definePlayersBuildings = (players) => {
+	const playersBuildings = [];
+	
+	const setBuilding = (buildingType, property) => (
+		playersBuildings.push({
+			index: gameboard.findIndex(cell => cell.id === property.id),
+			building: buildingType,
+			amount: property[buildingType]
+		})
+	);
+	
+	utils.mapToArray(players).forEach(player => {
+		utils.mapToArray(player.property).forEach(property => {
+			if (property.house) {
+				setBuilding('house', property)
+			}
+			else if (property.hotel) {
+				setBuilding('hotel', property)
+			}
+		});
+	});
+
+	return playersBuildings;
+};
+
 export const hasPropertyOwner = (players, propertyId) => {
 	for (const [, player] of players) {
 		if (player.property.has(propertyId)) return [false, player];

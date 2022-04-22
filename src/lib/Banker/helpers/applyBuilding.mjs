@@ -1,13 +1,13 @@
 import validateBuilding from '../../error/validateBuilding.mjs';
 
-const applyBuilding = (player, buildingData, capacity) => {
+const applyBuilding = (player, buildingData, capacity, players) => {
 	validateBuilding(buildingData, player.property, capacity);
 
 	if (buildingData.action === 'buy') {
-		player.buyBuilding(buildingData);
+		player.buyBuilding(buildingData, players);
 		capacity[buildingData.building] -= 1;
 	} else {
-		player.sellBuilding(buildingData);
+		player.sellBuilding(buildingData, players);
 		capacity[buildingData.building] += 1;
 		if (buildingData.building === 'hotel') capacity.house -= 4;
 	}

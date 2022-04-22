@@ -1,4 +1,5 @@
 import React from 'react';
+import CardAction from '../CardAction/CardAction';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -8,6 +9,7 @@ import style from './Service.scss';
 
 const Service = ({card}) => (
 	<Card className={style.card}>
+		<CardAction card={card}/>
 		<Box className={style.cardContainer}>
 			<Box className={style.cardHeader}>
 				<Box className={style.imageContainer}>

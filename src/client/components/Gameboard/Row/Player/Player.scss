@@ -1,5 +1,9 @@
 .container {
+    border: 1px solid black;
+    animation: 4s linear 0s infinite alternate;
+    background-color: brown;
     font-size: 1rem;
     text-align: center;
-    color: red;
+    color: white;
+    border-radius: 50%;
 };

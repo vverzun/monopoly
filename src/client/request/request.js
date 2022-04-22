@@ -48,3 +48,24 @@ export const bid = (value) => {
 export const leaveAuction = () => {
     request(events.LEAVE_AUCTION);
 };
+
+export const buyBuilding = (propertyId, building) => {
+    request(events.BUILDING, 'buildingData', {
+        propertyId: propertyId,
+        building: building,
+        action: 'buy'
+    });
+};
+
+export const sellBuilding = (propertyId, building) => {
+    request(events.BUILDING, 'buildingData', {
+        propertyId: propertyId,
+        building: building,     
+        action: 'sell'
+    });
+};
+
+export const mortgage = (propertyId) => {
+    console.log('in progress...')
+};
+

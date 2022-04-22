@@ -8,11 +8,16 @@ import gameboard from '../../../lib/mock/gameboardMock.mjs';
 
 const Gameboard = () => {
     const playersPositions = useSelector(state => state.banker.playersPositions);
+    const playersBuildings = useSelector(state => state.banker.playersBuildings);
     const boardWithPlayers = JSON.parse(JSON.stringify(gameboard));
-
+    
     playersPositions.forEach(player => (
         boardWithPlayers[player.position].players.push(player))
     );
+
+    playersBuildings.forEach(cell => {
+        boardWithPlayers[cell.index][cell.building] = cell.amount;
+    });
     
     return (
         <Paper className={style.container}>
