@@ -1,26 +1,30 @@
-import validateTrade from '../../error/validateTrade.mjs';
+// import validateTrade from '../../error/validateTrade.mjs';
+import gameboard from '../../../lib/mock/gameboardMock.mjs';
 
-const applyTrade = (player, newOwner, tradeData) => {
-	validateTrade(player, tradeData);
+const applyTrade = (partner, banker) => {
+	const offer = {...partner.tradeOffer};
+	offer.player.items = itemsToProperty(offer.player.items);
+	offer.partner.items = itemsToProperty(offer.partner.items);
 
-	if (tradeData.item === 'prisonEscape') {
-		tradePrisonEscape(player, newOwner, tradeData);
-	} else {
-		tradeProperty(player, newOwner, tradeData);
-	}
+	const player = banker.findPlayer(offer.offerFrom);
 
-	if (!newOwner.payment.isBankrupt) player.changeBalance(tradeData.amount);
+	imitateTrade(offer, 'player', 'partner', player, partner);
+	imitateTrade(offer, 'partner', 'player', partner, player);
 };
 
-const tradePrisonEscape = (player, newOwner, {amount}) => {
-	player.freePrisonEscape -= 1;
-	newOwner.freePrisonEscape += 1;
-	newOwner.changeBalance(-Math.abs(amount), player);
-};
+const itemsToProperty = (items) => (
+	Object.entries(items).map((item) => gameboard.find((cell) => cell.title === item[0]))
+);
 
-const tradeProperty = (player, newOwner, {propertyId, amount}) => {
-	newOwner.buyProperty(player.property.get(propertyId), amount, player);
-	player.property.delete(propertyId);
+const imitateTrade = (offer, from, to, player, partner) => {
+	offer[from].items.forEach((item) => player.property.delete(item.id));
+	offer[to].items.forEach((item) => player.property.set(item.id, item));
+
+	if (offer[to].money) {
+		partner.changeBalance(-Math.abs(offer[to].money));
+		player.changeBalance(offer[to].money);
+		// bankrupt issue
+	};
 };
 
 export default applyTrade;

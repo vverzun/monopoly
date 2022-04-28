@@ -4,19 +4,19 @@ const processRequest = (data, banker, ws) => {
 	const player = banker.findPlayer(ws.id);
 
 	const request = {
-		[events.NEW_PLAYER_JOIN]: () => 
+		[events.NEW_PLAYER_JOIN]: () =>
 			banker.addPlayer(data.name, ws),
-		
-		[events.READY]: () => 
+
+		[events.READY]: () =>
 			banker.setPlayerReady(player, 'isReady', true),
 
-		[events.BOARD_MOVE]: () => 
+		[events.BOARD_MOVE]: () =>
 			banker.processBoardMove(player, data.diceRoll),
-		
+
 		[events.LEAVE_AUCTION]: () =>
 			banker.processPlayerLeaveAuction(player),
 
-		[events.ESCAPE_PRISON]: () => 
+		[events.ESCAPE_PRISON]: () =>
 			player.processPrisonEscape(data.escapeType),
 
 		[events.TRADE]: () =>
@@ -33,7 +33,10 @@ const processRequest = (data, banker, ws) => {
 
 		[events.BANKRUPT]: () =>
 			banker.processBankrupt(player),
-		
+
+		[events.OFFER_TRADE]: () =>
+			banker.offerTrade({...data.tradeData, offerFrom: player.id}),
+
 		[events.PONG]: () => ws.isAlive = true,
 	};
 

@@ -6,6 +6,9 @@ const applyInput = (player, input, banker) => {
 		[events.PROPERTY_DECISION]: () =>
 			player.processPropertyDecision(input.decision, banker),
 
+		[events.TRADE_DECISION]: () =>
+			banker.processTrade(player, input.decision),
+
 		[events.CARD_DRAW]: () =>
 			player.processCardDraw(input.cardType, banker),
 

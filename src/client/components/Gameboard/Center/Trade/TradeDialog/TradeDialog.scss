@@ -1,0 +1,26 @@
+.dialog {
+    .closeIcon {
+        position: absolute;
+        right: 0;
+    };
+
+    .container {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 550px;
+        padding: 1rem;
+
+        .title {
+            font-size: 2rem;
+        };
+
+        .tradeContainer {
+            display: flex;
+        };
+
+        .submit {
+            margin-top: 20px;
+        };
+    };
+};

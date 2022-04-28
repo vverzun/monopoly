@@ -6,17 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import style from './Street.scss';
 import house from '../../../../resources/house.png';
 import hotel from '../../../../resources/hotel.png';
-import uuid from "uuid";
+import uuid from 'uuid';
 
 const Building = ({card}) => {
 	const building = [];
 
 	for (let i = 0; i < card.house; i++) {
-		building.push(<img key={uuid.v4()} alt='house' src={house}/>)
+		building.push(<img key={uuid.v4()} alt='house' src={house}/>);
 	};
 
 	for (let i = 0; i < card.hotel; i++) {
-		building.push(<img key={uuid.v4()} alt='hotel' src={hotel}/>)
+		building.push(<img key={uuid.v4()} alt='hotel' src={hotel}/>);
 	};
 
 	return (

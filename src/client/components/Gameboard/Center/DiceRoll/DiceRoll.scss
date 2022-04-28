@@ -6,6 +6,10 @@
     width: 208px;
     
     .die {
-        font-size: 5rem;
+        font-size: 3rem;
     };
 };
+
+.diceRollButton {
+    composes: centerButton from global;
+}

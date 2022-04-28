@@ -7,7 +7,7 @@ const processNearestCell = (card, banker, self) => {
 		const diceRoll = findNearestTargetCell(self.position, card.target);
 		banker.processBoardMove(self, diceRoll, false);
 	} else {
-		//response.showCardText();
+		// response.showCardText();
 	};
 };
 

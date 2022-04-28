@@ -2,11 +2,14 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    padding: 1rem 3rem;
-    width: 200px;
-
+    justify-content: center;
+    padding: 0 20px;
+    width: 260px;
+    height: 300px;
+    margin-bottom: 20px;
+    
     .welcomeText {
-        margin-bottom: 1rem;
+        margin-bottom: 40px;
         text-align: center;
     };
 

@@ -14,36 +14,47 @@ export const conditionedPlayers = (players, condition) => (
 );
 
 export const definePlayersPositions = (players) => (
-	utils.mapToArray(players).map(player => ({
+	utils.mapToArray(players).map((player) => ({
 		id: player.id,
 		name: player.name,
-		position: player.position
+		position: player.position,
 	}))
 );
 
 export const definePlayersBuildings = (players) => {
 	const playersBuildings = [];
-	
+
 	const setBuilding = (buildingType, property) => (
 		playersBuildings.push({
-			index: gameboard.findIndex(cell => cell.id === property.id),
+			index: gameboard.findIndex((cell) => cell.id === property.id),
 			building: buildingType,
-			amount: property[buildingType]
+			amount: property[buildingType],
 		})
 	);
-	
-	utils.mapToArray(players).forEach(player => {
-		utils.mapToArray(player.property).forEach(property => {
+
+	utils.mapToArray(players).forEach((player) => {
+		utils.mapToArray(player.property).forEach((property) => {
 			if (property.house) {
-				setBuilding('house', property)
-			}
-			else if (property.hotel) {
-				setBuilding('hotel', property)
+				setBuilding('house', property);
+			} else if (property.hotel) {
+				setBuilding('hotel', property);
 			}
 		});
 	});
 
 	return playersBuildings;
+};
+
+export const definePlayersProperties = (players) => {
+	const playersProperties = [];
+
+	utils.mapToArray(players).forEach((player) => {
+		utils.mapToArray(player.property).forEach((property) => {
+			playersProperties.push({...property, owner: player.id});
+		});
+	});
+
+	return playersProperties;
 };
 
 export const hasPropertyOwner = (players, propertyId) => {

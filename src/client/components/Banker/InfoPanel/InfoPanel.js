@@ -6,11 +6,11 @@ import Box from '@material-ui/core/Box';
 import style from './InfoPanel.scss';
 
 const InfoPanel = ({start, logged}) => (
-    <Box className={style.infoPanel}>
-        {start && logged && <Leaderboard/>}
-        {!start && logged && <ReadyCheck/>}
-        {logged && <History/>}
-    </Box>
+	<Box className={style.infoPanel}>
+		{start && logged && <Leaderboard/>}
+		{!start && logged && <ReadyCheck/>}
+		{logged && <History/>}
+	</Box>
 );
 
 export default InfoPanel;

@@ -14,7 +14,7 @@ const validateBuilding = (buildingData, property, capacity) => {
 
 const validateBuildingBuying = (buildingData, property, capacity) => {
 	const {building, propertyId, action} = buildingData;
-	
+
 	if (!isColorGroupComplete(propertyId, property)) {
 		throw new Error('You can\'t buy buildings until color group is complete!');
 	}

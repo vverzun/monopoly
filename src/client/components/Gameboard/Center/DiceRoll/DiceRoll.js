@@ -6,35 +6,35 @@ import style from './DiceRoll.scss';
 import {boardMove} from '../../../../request/request';
 
 const dieSymbol = new Map([
-    [1, '\u2680'],
-    [2, '\u2681'],
-    [3, '\u2682'],
-    [4, '\u2683'],
-    [5, '\u2684'],
-    [6, '\u2685'],
+	[1, '\u2680'],
+	[2, '\u2681'],
+	[3, '\u2682'],
+	[4, '\u2683'],
+	[5, '\u2684'],
+	[6, '\u2685'],
 ]);
 
 const DiceRoll = () => {
-    const [dice, setRoll] = useState([]);
+	const [dice, setRoll] = useState([]);
 
-    const onDiceRoll = useCallback(() => {
-        const die1 = Math.floor(6 * Math.random()) + 1;
-        const die2 = Math.floor(6 * Math.random()) + 1;
-        setRoll([die1, die2]);
-        boardMove(die1 + die2);
-    }, []);
+	const onDiceRoll = useCallback(() => {
+		const die1 = Math.floor(6 * Math.random()) + 1;
+		const die2 = Math.floor(6 * Math.random()) + 1;
+		setRoll([die1, die2]);
+		boardMove(die1 + die2);
+	}, []);
 
-    return (
-        <Box className={style.container}>
-            <Button className={style.button}
-                variant='contained'
-                onClick={onDiceRoll}>ROLL DICES
-            </Button>
-            <Typography className={style.die}>
-                {dieSymbol.get(dice[0])}{dieSymbol.get(dice[1])}
-            </Typography>
-        </Box>
-    );
+	return (
+		<Box className={style.container}>
+			<Button className={style.diceRollButton}
+				variant='contained'
+				onClick={onDiceRoll}>ROLL
+			</Button>
+			<Typography className={style.die}>
+				{dieSymbol.get(dice[0])}{dieSymbol.get(dice[1])}
+			</Typography>
+		</Box>
+	);
 };
 
 export default DiceRoll;

@@ -9,20 +9,20 @@ import {ThemeProvider} from '@material-ui/styles';
 import './style.scss';
 
 const theme = createMuiTheme({
-    typography: {
-        fontFamily: ['Kabel', 'sans-serif'].join(','),
-        fontSize: 20
-    }
+	typography: {
+		fontFamily: ['Kabel', 'sans-serif'].join(','),
+		fontSize: 20,
+	},
 });
-    
+
 export const store = createStore(rootReducer);
 
 const Main = () => (
-    <ThemeProvider theme={theme}>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </ThemeProvider>
+	<ThemeProvider theme={theme}>
+		<Provider store={store}>
+			<App/>
+		</Provider>
+	</ThemeProvider>
 );
 
 ReactDOM.render(<Main/>, document.getElementById('root'));

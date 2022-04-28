@@ -1,7 +1,7 @@
 .historyContainer {
     height: 300px;
-    max-height: 300px;
-    max-width: 300px;
+    width: 300px;
+    margin-bottom: 20px;
 	overflow-y: scroll;
     
     .header {
@@ -15,6 +15,10 @@
     td {
         text-align: center;
         font-size: 1rem;
+
+        &:last-child {
+            width: 190px;
+        };
     };
 
     &::-webkit-scrollbar-track {

@@ -30,7 +30,18 @@ class Banker {
 	static create(logger) {
 		return new Banker(logger);
 	};
-	
+
+	offerTrade(tradeData) {
+		const filter = (obj) => (
+			Object.fromEntries(Object.entries(obj).filter((item) => item[1] === true))
+		);
+		tradeData.player.items = filter(tradeData.player.items);
+		tradeData.partner.items = filter(tradeData.partner.items);
+		this.findPlayer(tradeData.offerTo).tradeOffer = tradeData;
+		response.offerTrade(tradeData.offerTo, tradeData);
+		this.findPlayer(tradeData.offerTo).setInput('tradeDecision');
+	};
+
 	processBoardMove(player, diceRoll, isGoBonus = true) {
 		applyBoardMove(this, player, diceRoll);
 		player.move(diceRoll, this.players, isGoBonus);
@@ -53,7 +64,7 @@ class Banker {
 		if (conditionedPlayers(this.players, 'isReady') === this.players.size) {
 			this.isGameStarted = true;
 			this.logger.log(`Game has started.`);
-			response.startGame(this.players);	
+			response.startGame(this.players);
 		};
 	};
 
@@ -70,8 +81,13 @@ class Banker {
 		applyAuctionLeave(player, this.players, this, this.auction);
 	};
 
-	processTrade(player, tradeData) {
-		applyTrade(player, this.findPlayer(tradeData.newOwner), tradeData);
+	processTrade(player, decision) {
+		if (decision === 'accept') {
+			applyTrade(player, this);
+			response.trade(player, this.findPlayer(player.tradeOffer.offerFrom), this.players);
+		} else {
+			player.tradeOffer = {};
+		};
 	};
 
 	processBuilding(player, buildingData) {

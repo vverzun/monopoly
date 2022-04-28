@@ -5,10 +5,10 @@ import auction from './auction';
 import logger from './logger';
 
 const rootReducer = combineReducers({
-    banker,
-    player,
-    auction,
-    logger
+	banker,
+	player,
+	auction,
+	logger,
 });
 
 export default rootReducer;

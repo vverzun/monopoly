@@ -11,25 +11,25 @@ import initWebsocket from '../../utils/initWebsocket';
 export const ws = new WebSocket('ws://localhost:3030');
 
 const App = () => {
-    useEffect(() => {
-        initWebsocket();
+	useEffect(() => {
+		initWebsocket();
 
-        return () => {
-            ws.close()
-        };
-    }, []);
+		return () => {
+			ws.close();
+		};
+	}, []);
 
-    return (
-        <Box className={style.container}>
-            <img className={style.logo} src={monopolyLogo} alt='monopoly logo'/>
-            <LogIn/>
-            <Box className={style.interface}>
-                <Gameboard/>
-                <Banker/>
-            </Box>
-            <ErrorAlert/>
-        </Box>
-    );
+	return (
+		<Box className={style.container}>
+			<img className={style.logo} src={monopolyLogo} alt='monopoly logo'/>
+			<LogIn/>
+			<Box className={style.interface}>
+				<Gameboard/>
+				<Banker/>
+			</Box>
+			<ErrorAlert/>
+		</Box>
+	);
 };
 
 export default App;

@@ -11,34 +11,34 @@ import style from './History.scss';
 import uuid from 'uuid';
 
 const History = () => {
-    const {logs} = useSelector(state => state.logger);
-    const box = useRef();
-    const memoLogs = useMemo(() => (
-        logs.map(log => (
-            <TableRow key={uuid.v4()}>
-                    <TableCell>{log.time}</TableCell>
-                    <TableCell>{log.message}</TableCell>
-            </TableRow>))
-    ), [logs]);
-    useEffect(() => {
-        box.current.scrollTop = box.current.scrollHeight - box.current.clientHeight;
-    }, [logs])
+	const {logs} = useSelector((state) => state.logger);
+	const box = useRef();
+	const memoLogs = useMemo(() => (
+		logs.map((log) => (
+			<TableRow key={uuid.v4()}>
+				<TableCell>{log.time}</TableCell>
+				<TableCell>{log.message}</TableCell>
+			</TableRow>))
+	), [logs]);
+	useEffect(() => {
+		box.current.scrollTop = box.current.scrollHeight - box.current.clientHeight;
+	}, [logs]);
 
-    return (
-        <TableContainer ref={box} component={Paper} className={style.historyContainer}>
-            <Table stickyHeader>
-                <TableHead>
-                    <TableRow className={style.header}>
-                        <TableCell>Time</TableCell>
-                        <TableCell>Event</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>                
-                    {memoLogs}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    )
+	return (
+		<TableContainer component={Paper} ref={box} className={style.historyContainer}>
+			<Table stickyHeader>
+				<TableHead>
+					<TableRow className={style.header}>
+						<TableCell>Time</TableCell>
+						<TableCell>Event</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{memoLogs}
+				</TableBody>
+			</Table>
+		</TableContainer>
+	);
 };
 
 export default History;

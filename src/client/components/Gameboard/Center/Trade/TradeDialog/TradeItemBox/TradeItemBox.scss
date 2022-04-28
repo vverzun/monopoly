@@ -1,0 +1,48 @@
+.tradeItemBox {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 250px;
+    border: 2px solid black;
+    padding: 20px 0;
+    margin: 0 10px;
+    
+    .captionText {
+        margin-bottom: 10px;
+    };
+
+    .itemText {
+        font-size: 1rem;
+    };
+
+    .tradeItemList {
+        width: 200px;
+        height: 150px;
+        padding: 0 15px;
+        overflow-y: scroll;
+        
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        };
+        
+        &::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        };
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        };
+    };
+    
+    label > span {
+        font-size: 1rem;
+    };
+
+    .moneyInput {
+        width: 100px;
+        margin-top: 20px;
+    };
+};

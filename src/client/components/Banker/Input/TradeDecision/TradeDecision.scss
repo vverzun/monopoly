@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 550px;
+    padding: 1rem;
+
+    .itemBoxContainer {
+        display: flex;
+    };
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    };
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    };
+};

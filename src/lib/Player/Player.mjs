@@ -23,6 +23,7 @@ class Player {
 		this.nextRentTimes = 0;
 		this.card = {},
 		this.inputType = '',
+		this.tradeOffer = {},
 		this.logger = logger;
 		this.payment = {
 			lastPayedTo: '',
@@ -54,11 +55,11 @@ class Player {
 		applyPropertyMortgage(propertyId, isMortgaged, this);
 	};
 
-	buyProperty(property, price, previousOwner) {
+	buyProperty(property, price, players, previousOwner) {
 		this.changeBalance(-Math.abs(price), previousOwner);
 		this.property.set(property.id, property);
 		this.logger.log(`${this.name} bought a ${property.title}`);
-		response.buyProperty(this.id, property);
+		response.buyProperty(this.id, property, players);
 	};
 
 	payRent(property, owner, diceAmount) {
@@ -98,8 +99,8 @@ class Player {
 	};
 
 	move(diceRoll, players, isGoBonus) {
-		const nextPosition = (this.position + diceRoll) % 40; 
-		
+		const nextPosition = (this.position + diceRoll) % 40;
+
 		if (nextPosition < this.position && isGoBonus) {
 			this.changeBalance(200);
 		};

@@ -29,21 +29,21 @@ const chanceMock = [
 		cell: 11,
 		isGoBonus: true,
 	},
-	{	
+	{
 		id: 'f0fc7033-8022-41e0-8919-44e2c240b440',
 		type: 'rentMultiplier',
 		origin: 'chance',
 		text: 'Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total 10 times the amount thrown.',
 		target: 'service',
-		nextRentTimes: 10
+		nextRentTimes: 10,
 	},
-	{	
+	{
 		id: '0086e103-df97-4295-95d3-5145f416c979',
 		type: 'rentMultiplier',
 		origin: 'chance',
 		text: 'Advance token to the nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.',
 		target: 'railway',
-		nextRentTimes: 2
+		nextRentTimes: 2,
 	},
 	{
 		id: 'e6d7e684-3989-4013-891a-7b534558ea58',
@@ -59,7 +59,7 @@ const chanceMock = [
 		text: 'Get Out of Jail Free. This card may be kept until needed or sold/traded.',
 		freePrisonEscape: 1,
 	},
-	{	
+	{
 		id: '3b6816cf-1bfa-4647-ab61-c20ef70d31c8',
 		type: 'goBack',
 		origin: 'chance',

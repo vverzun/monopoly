@@ -11,33 +11,33 @@ import style from './PropertyDecision.scss';
 import {propertyDecision} from '../../../../request/request';
 
 const PropertyDecision = ({isOpen}) => {
-    const {holdProperty} = useSelector(state => state.banker);
+	const {holdProperty} = useSelector((state) => state.banker);
 
-    const handleDecision = useCallback((e) => {
-        propertyDecision(e.currentTarget.value);
-    }, []);
+	const handleDecision = useCallback((e) => {
+		propertyDecision(e.currentTarget.value);
+	}, []);
 
-    return (
-        <Dialog open={isOpen}>
-            <Box className={style.container}>
-                <DialogTitle>Property decision</DialogTitle>
-                <Card card={holdProperty}/>
-                <Typography className={style.price}>Price: ${holdProperty.price}</Typography>
-                <DialogActions className={style.actions}>
-                    <Button
-                        onClick={handleDecision}
-                        variant='contained'
-                        value='buy'>Buy
-                    </Button>
-                    <Button
-                        onClick={handleDecision}
-                        variant='contained'
-                        value='auction'>Auction
-                    </Button>        
-                </DialogActions>
-            </Box>
-        </Dialog>
-    );
+	return (
+		<Dialog open={isOpen}>
+			<Box className={style.container}>
+				<DialogTitle>Property decision</DialogTitle>
+				<Card card={holdProperty}/>
+				<Typography className={style.price}>Price: ${holdProperty.price}</Typography>
+				<DialogActions className={style.actions}>
+					<Button
+						onClick={handleDecision}
+						variant='contained'
+						value='buy'>Buy
+					</Button>
+					<Button
+						onClick={handleDecision}
+						variant='contained'
+						value='auction'>Auction
+					</Button>
+				</DialogActions>
+			</Box>
+		</Dialog>
+	);
 };
 
 export default PropertyDecision;

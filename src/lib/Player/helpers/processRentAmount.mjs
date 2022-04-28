@@ -37,11 +37,10 @@ const calculateStreetRent = (id, property) => {
 
 	if (property.get(id).house) {
 		amount += property.get(id).houseRent[property.get(id).house - 1];
-	}
-	else if (property.get(id).hotel) {
+	} else if (property.get(id).hotel) {
 		amount += property.get(id).hotelRent;
 	} else {
-		amount = isColorGroupComplete(id, property) ? property.get(id).rent * 2 : property.get(id).rent
+		amount = isColorGroupComplete(id, property) ? property.get(id).rent * 2 : property.get(id).rent;
 	}
 
 	return amount;

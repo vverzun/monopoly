@@ -15,7 +15,7 @@ const banker = Banker.create(logger);
 
 wss.on('connection', (ws) => {
 	socket.registerWSConnection(ws);
-	
+
 	ws.on('message', (request) => {
 		try {
 			processRequest(JSON.parse(request), banker, ws);

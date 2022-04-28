@@ -14,7 +14,7 @@ module.exports = {
 			template: './src/client/public/index.html',
 			filename: './index.html',
 			favicon: './src/client/resources/favicon.png',
-		})
+		}),
 	],
 	module: {
 		rules: [
@@ -32,14 +32,14 @@ module.exports = {
 						options: {
 							sourceMap: true,
 							modules: true,
-							localIdentName: "[local]___[hash:base64:5]"
+							localIdentName: '[local]___[hash:base64:5]',
 						},
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
-							plugins: () => [autoprefixer()]
-						}
+							plugins: () => [autoprefixer()],
+						},
 					}, 'sass-loader'],
 			},
 			{
@@ -47,10 +47,10 @@ module.exports = {
 				use: {
 					loader: 'file-loader',
 					options: {
-						esModule: false
-					}
+						esModule: false,
+					},
 				},
 			},
 		],
-	}
+	},
 };

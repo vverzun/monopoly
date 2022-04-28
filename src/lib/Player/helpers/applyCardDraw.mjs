@@ -5,28 +5,28 @@ import communityChest from '../../mock/communityChestMock.mjs';
 import chance from '../../mock/chanceMock.mjs';
 
 const applyCardDraw = (cardType, banker, self) => {
-	const card = drawRandomCard(cardType)
+	const card = drawRandomCard(cardType);
 	self.card = card;
-	
+
 	const cards = {
-		'goTo': () => 
+		'goTo': () =>
 			banker.processBoardMove(self, card.cell - self.position, card.isGoBonus),
-		
-		'goBack': () => 
+
+		'goBack': () =>
 			banker.processBoardMove(self, card.cell, false),
-		
+
 		'rentMultiplier': () =>
 		 	processNearestCell(card, banker, self),
 
 		'balance': () =>
 			changePlayerBalances(card, banker.players, self),
-	
+
 		'prisonEscape': () =>
 			self.changeStatus('freePrisonEscape', self.freePrisonEscape + 1),
-		
+
 		'prison': () =>
 		 	self.changeStatus('isPrisoner', card.isPrisoner),
-		
+
 		'propertyFee': () => {
 			const fee = ownPropertyPrice(card, self.property);
 			self.changeBalance(-Math.abs(fee));

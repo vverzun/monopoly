@@ -2,31 +2,31 @@ import gameboard from '../../mock/gameboardMock.mjs';
 import events from '../../../server/events.mjs';
 
 const applyBoardMove = (banker, player, diceRoll) => {
-    const newPosition = (diceRoll + player.position) % 40;
-    
-    const boardMoveEvents = {
-        [events.GO]: () => 
-            '',
-        [events.PROPERTY]: (cellData) =>
-            banker.processProperty(player, cellData, diceRoll),
-        [events.TAX]: (cellData) => 
-            player.changeBalance(cellData.amount),
-        [events.CARD_DRAW]: (cellData) =>
-            player.setInput(cellData.type),
-        [events.PRISON]: (cellData) => 
-            player.changeStatus('isPrisoner', cellData.isPrisoner)
-    };
-    
-    const {type, cellData} = findCell(newPosition); 
-    
-    return boardMoveEvents[type](cellData);
+	const newPosition = (diceRoll + player.position) % 40;
+
+	const boardMoveEvents = {
+		[events.GO]: () =>
+			'',
+		[events.PROPERTY]: (cellData) =>
+			banker.processProperty(player, cellData, diceRoll),
+		[events.TAX]: (cellData) =>
+			player.changeBalance(cellData.amount),
+		[events.CARD_DRAW]: (cellData) =>
+			player.setInput(cellData.type),
+		[events.PRISON]: (cellData) =>
+			player.changeStatus('isPrisoner', cellData.isPrisoner),
+	};
+
+	const {type, cellData} = findCell(newPosition);
+
+	return boardMoveEvents[type](cellData);
 };
 
 export default applyBoardMove;
 
 const findCell = (cell) => {
 	const cellTypeToEvent = {
-        'go': events.GO,
+		'go': events.GO,
 		'street': events.PROPERTY,
 		'railway': events.PROPERTY,
 		'service': events.PROPERTY,
@@ -37,7 +37,7 @@ const findCell = (cell) => {
 	};
 
 	return {
-        type: cellTypeToEvent[gameboard[cell].type], 
-        cellData: gameboard[cell]
-    };
+		type: cellTypeToEvent[gameboard[cell].type],
+		cellData: gameboard[cell],
+	};
 };

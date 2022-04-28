@@ -9,7 +9,7 @@ const registerWSConnection = (ws) => {
 };
 
 const findClient = (id) => {
-	for (let client of wss.clients) {
+	for (const client of wss.clients) {
 		if (client.id === id) return client;
 	}
 };
@@ -35,5 +35,5 @@ export default {
 	registerWSConnection: registerWSConnection,
 	findClient: findClient,
 	broadcast: broadcast,
-	heartbeat: heartbeat
+	heartbeat: heartbeat,
 };
