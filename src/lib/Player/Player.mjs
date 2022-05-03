@@ -38,6 +38,15 @@ class Player {
 		return new Player(id, name, logger);
 	};
 
+	retrieveData(data) {
+		for (const key in this) {
+			if (key in data && key !== 'logger') {
+				this[key] = data[key];
+			};
+		}; 
+		this.property = new Map(data.property.map(item => [item.id, item]));
+	};
+
 	processPrisonEscape(escapeType) {
 		applyPrisonEscape(escapeType, this);
 	};

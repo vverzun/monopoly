@@ -12,6 +12,10 @@ export const newPlayerJoin = (name) => {
 	request(events.NEW_PLAYER_JOIN, 'name', name);
 };
 
+export const connect = (state) => {
+	request(events.CONNECT, 'state', state);	
+};
+
 export const ready = () => {
 	request(events.READY);
 };

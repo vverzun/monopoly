@@ -1,9 +1,13 @@
 import {store} from '../public/index';
 import {ws} from '../components/App/App';
+import {connect} from '../request/request';
 let pingTimeout;
 
 const initWebsocket = () => {
-	ws.onopen = () => heartbeat(pingTimeout);
+	ws.onopen = () => {
+		heartbeat(pingTimeout);
+		connect(store.getState());
+	};
 	ws.onmessage = (response) => {
 		response = JSON.parse(response.data);
 
@@ -12,7 +16,14 @@ const initWebsocket = () => {
 		case 'ping': heartbeat(); break;
 		};
 	};
-
+	ws.onerror = () => {
+		store.dispatch({
+			type: 'changeConnectionStatus',
+			payload: {
+				isOpen: false
+			}
+		});
+	};
 	ws.onclose = () => clearTimeout(pingTimeout);
 };
 

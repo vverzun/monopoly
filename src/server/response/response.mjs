@@ -27,9 +27,10 @@ const error = (id, message) => {
 	response(id, actions.ERROR, {error: message});
 };
 
-const disconnect = (banker) => {
+const playerDisconnected = (banker) => {
 	socket.broadcast(resObj(actions.UPDATE_LOBBY_INFO, {
 		players: utils.mapToArray(banker.players),
+		clientsCount: banker.clients.size,
 		playersCount: banker.players.size,
 		readyCount: conditionedPlayers(banker.players, 'isReady'),
 	}));
@@ -44,6 +45,7 @@ const addPlayer = (id, name, banker) => {
 
 	socket.broadcast(resObj(actions.UPDATE_LOBBY_INFO, {
 		players: utils.mapToArray(banker.players),
+		clientsCount: banker.players.size,
 		playersCount: banker.players.size,
 		readyCount: conditionedPlayers(banker.players, 'isReady'),
 	}));
@@ -58,6 +60,7 @@ const changeStatus = (id, status, value, banker) => {
 	if (status === 'isReady') {
 		socket.broadcast(resObj(actions.UPDATE_LOBBY_INFO, {
 			players: utils.mapToArray(banker.players),
+			clientsCount: banker.clients.size,
 			playersCount: banker.players.size,
 			readyCount: conditionedPlayers(banker.players, 'isReady'),
 		}));
@@ -174,8 +177,21 @@ const trade = (player, partner, players) => {
 	}));
 };
 
+const connectPlayer = (ws, banker) => {
+	response(ws.id, actions.CHANGE_CONNECTION_STATUS, {
+		isOpen: true
+	});
+
+	socket.broadcast(resObj(actions.UPDATE_LOBBY_INFO, {
+		players: utils.mapToArray(banker.players),
+		clientsCount: banker.clients.size,
+		playersCount: banker.players.size,
+		readyCount: conditionedPlayers(banker.players, 'isReady'),
+	}));
+};
+
 export default {
-	disconnect: disconnect,
+	playerDisconnected: playerDisconnected,
 	error: error,
 	trade: trade,
 	addPlayer: addPlayer,
@@ -194,6 +210,7 @@ export default {
 	offerTrade: offerTrade,
 	log: log,
 	clearLogger: clearLogger,
+	connectPlayer: connectPlayer
 };
 
 

@@ -13,7 +13,7 @@ const events = {
 	BID: 'bid',
 	LEAVE_AUCTION: 'leaveAuction',
 	ESCAPE_PRISON: 'escapePrison',
-
+	CONNECT: 'connect',
 	UPDATE: 'update',
 	ERROR: 'error',
 	PING: 'ping',

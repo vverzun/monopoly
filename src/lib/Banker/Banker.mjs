@@ -1,5 +1,7 @@
 import Player from '../Player/Player.mjs';
 import Auction from '../Auction/Auction.mjs';
+import serializeCurrentGameData from '../Banker/helpers/serializeCurrentGameData.mjs';
+import restorePlayerInstances from '../Banker/helpers/restorePlayerInstances.mjs';
 import {addMembersToAuction, conditionedPlayers} from './helpers/players.mjs';
 import validateLogIn from '../error/validateLogIn.mjs';
 import applyBoardMove from './helpers/applyBoardMove.mjs';
@@ -29,6 +31,34 @@ class Banker {
 
 	static create(logger) {
 		return new Banker(logger);
+	};
+
+	getData() {
+		return serializeCurrentGameData(this);
+	};
+
+	retrieveLastGameData(gameData) {
+		for (const key in this) {
+			if (key in gameData) {
+				this[key] = gameData[key];
+			};
+		}; 
+		//this.clients = new Map(gameData.clients.map(client => [client, client]));
+		
+		restorePlayerInstances(this, gameData);
+	};
+
+	connectPlayer(state, ws) {
+		if (this.isGameStarted) {
+			if (this.players.has(state.player.id)) {
+				ws.id = state.player.id;
+				this.clients.set(ws.id, ws);
+			} else {
+				ws.close(); //no intruders allowed
+			};
+		};
+
+		response.connectPlayer(ws, this);
 	};
 
 	offerTrade(tradeData) {
@@ -102,15 +132,21 @@ class Banker {
 		applyBankrupt(player, this);
 	};
 
-	removePlayer(id) {
-		this.logger.log(`Player left the game`);
-		this.clients.delete(id);
-		this.players.delete(id);
-		if (this.players.size === 0) {
-			this.isGameStarted = false;
-			this.logger.clear();
+	// removePlayer(id) {
+	// 	this.logger.log(`Player left the game`);
+	// 	this.clients.delete(id);
+	// 	this.players.delete(id);
+	// 	if (this.players.size === 0) {
+	// 		this.isGameStarted = false;
+	// 		this.logger.clear();
+	// 	};
+	// };
+
+	removeClient(id) {
+		if (this.clients.has(id)) {
+			this.clients.delete(id);
+			response.playerDisconnected(this);
 		};
-		response.disconnect(this);
 	};
 };
 

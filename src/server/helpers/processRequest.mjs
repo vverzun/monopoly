@@ -1,9 +1,13 @@
 import events from '../events.mjs';
+import {setGameData} from '../server.mjs';
 
-const processRequest = (data, banker, ws) => {
+const processRequest = async (data, banker, ws) => {
 	const player = banker.findPlayer(ws.id);
 
 	const request = {
+		[events.CONNECT]: () => 
+			banker.connectPlayer(data.state, ws),
+
 		[events.NEW_PLAYER_JOIN]: () =>
 			banker.addPlayer(data.name, ws),
 
@@ -40,7 +44,10 @@ const processRequest = (data, banker, ws) => {
 		[events.PONG]: () => ws.isAlive = true,
 	};
 
-	return request[data.type]();
+	request[data.type]();
+	if (data.type !== events.PONG && data.type !== events.CONNECT) {
+		await setGameData('game', JSON.stringify(banker.getData()));
+	};
 };
 
 export default processRequest;

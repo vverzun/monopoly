@@ -1,4 +1,5 @@
 const events = {
+	CONNECT: 'connect',
 	NEW_PLAYER_JOIN: 'newPlayerJoin',
 	READY: 'ready',
 	BOARD_MOVE: 'boardMove',

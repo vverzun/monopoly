@@ -7,6 +7,7 @@ import rootReducer from '../reducers/rootReducer';
 import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 import './style.scss';
+import {loadState, saveState} from '../utils/localStorage';
 
 const theme = createMuiTheme({
 	typography: {
@@ -15,7 +16,12 @@ const theme = createMuiTheme({
 	},
 });
 
-export const store = createStore(rootReducer);
+const persistedState = loadState();
+export const store = createStore(rootReducer, persistedState);
+
+store.subscribe(() => {
+	saveState(store.getState());
+});
 
 const Main = () => (
 	<ThemeProvider theme={theme}>
