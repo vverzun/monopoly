@@ -179,7 +179,7 @@ const trade = (player, partner, players) => {
 
 const connectPlayer = (ws, banker) => {
 	response(ws.id, actions.CHANGE_CONNECTION_STATUS, {
-		isOpen: true
+		isOpen: true,
 	});
 
 	socket.broadcast(resObj(actions.UPDATE_LOBBY_INFO, {
@@ -210,7 +210,7 @@ export default {
 	offerTrade: offerTrade,
 	log: log,
 	clearLogger: clearLogger,
-	connectPlayer: connectPlayer
+	connectPlayer: connectPlayer,
 };
 
 

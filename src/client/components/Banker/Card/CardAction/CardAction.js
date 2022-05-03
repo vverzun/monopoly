@@ -1,4 +1,5 @@
 import React, {useState, useMemo, useCallback} from 'react';
+import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -61,6 +62,10 @@ const CardAction = ({card}) => {
 			</Menu>
 		</div>
 	);
+};
+
+CardAction.propTypes = {
+	card: PropTypes.object,
 };
 
 export default CardAction;

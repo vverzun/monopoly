@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import Card from '../../Card/Card';
 import Dialog from '@material-ui/core/Dialog';
 import Box from '@material-ui/core/Box';
@@ -38,6 +39,10 @@ const PropertyDecision = ({isOpen}) => {
 			</Box>
 		</Dialog>
 	);
+};
+
+PropertyDecision.propTypes = {
+	isOpen: PropTypes.bool,
 };
 
 export default PropertyDecision;

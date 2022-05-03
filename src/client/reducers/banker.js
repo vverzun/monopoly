@@ -21,14 +21,14 @@ const initialState = {
 	playersBuildings: [],
 	playersProperties: [],
 	holdProperty: {},
-	isConnection: true
+	isConnection: true,
 };
 
 const banker = (state = initialState, action) => {
 	switch (action.type) {
 	case CHANGE_CONNECTION_STATUS: return {
 		...state,
-		isConnection: action.payload.isOpen
+		isConnection: action.payload.isOpen,
 	};
 	case UPDATE_LOBBY_INFO: return {
 		...state,

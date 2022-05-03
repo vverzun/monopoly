@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -26,4 +27,8 @@ const SelectTradePartner = ({tradePartner, onPartnerChange}) => {
 	);
 };
 
+SelectTradePartner.propTypes = {
+	tradePartner: PropTypes.string,
+	onPartnerChange: PropTypes.func,
+};
 export default SelectTradePartner;

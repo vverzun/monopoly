@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 const isEnvFound = dotenv.config();
 if (!isEnvFound) {
-    throw new Error('.env file is not found');
+	throw new Error('.env file is not found');
 };
 
 const config = {};

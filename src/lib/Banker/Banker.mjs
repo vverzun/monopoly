@@ -37,14 +37,13 @@ class Banker {
 		return serializeCurrentGameData(this);
 	};
 
-	retrieveLastGameData(gameData) {
+	restoreGameData(gameData) {
 		for (const key in this) {
 			if (key in gameData) {
 				this[key] = gameData[key];
 			};
-		}; 
-		//this.clients = new Map(gameData.clients.map(client => [client, client]));
-		
+		};
+
 		restorePlayerInstances(this, gameData);
 	};
 
@@ -54,7 +53,7 @@ class Banker {
 				ws.id = state.player.id;
 				this.clients.set(ws.id, ws);
 			} else {
-				ws.close(); //no intruders allowed
+				ws.close(); // no intruders allowed
 			};
 		};
 
@@ -131,16 +130,6 @@ class Banker {
 	processBankrupt(player) {
 		applyBankrupt(player, this);
 	};
-
-	// removePlayer(id) {
-	// 	this.logger.log(`Player left the game`);
-	// 	this.clients.delete(id);
-	// 	this.players.delete(id);
-	// 	if (this.players.size === 0) {
-	// 		this.isGameStarted = false;
-	// 		this.logger.clear();
-	// 	};
-	// };
 
 	removeClient(id) {
 		if (this.clients.has(id)) {

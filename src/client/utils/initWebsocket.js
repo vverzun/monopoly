@@ -20,8 +20,8 @@ const initWebsocket = () => {
 		store.dispatch({
 			type: 'changeConnectionStatus',
 			payload: {
-				isOpen: false
-			}
+				isOpen: false,
+			},
 		});
 	};
 	ws.onclose = () => clearTimeout(pingTimeout);

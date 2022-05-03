@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import style from './CardDraw.scss';
 import communityChest from '../../../../resources/communityChest.png';
@@ -18,6 +19,10 @@ const CardDraw = ({cardType}) => {
 			<img alt='card image' src={cardType === 'chance' ? chance : communityChest}/>
 		</Button>
 	);
+};
+
+CardDraw.propTypes = {
+	cardType: PropTypes.string,
 };
 
 export default CardDraw;

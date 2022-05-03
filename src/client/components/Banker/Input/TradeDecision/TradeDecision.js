@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import TradeItemBox from '../../../Gameboard/Center/Trade/TradeDialog/TradeItemBox/TradeItemBox';
 import Dialog from '@material-ui/core/Dialog';
 import Box from '@material-ui/core/Box';
@@ -7,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import style from './TradeDecision.scss';
-import uuid from 'uuid';
 import {tradeDecision} from '../../../../request/request';
 
 const TradeDecision = ({isOpen}) => {
@@ -49,6 +49,10 @@ const TradeDecision = ({isOpen}) => {
 			</Box>
 		</Dialog>
 	);
+};
+
+TradeDecision.propTypes = {
+	isOpen: PropTypes.bool,
 };
 
 export default TradeDecision;

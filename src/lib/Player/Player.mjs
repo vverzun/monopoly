@@ -43,8 +43,8 @@ class Player {
 			if (key in data && key !== 'logger') {
 				this[key] = data[key];
 			};
-		}; 
-		this.property = new Map(data.property.map(item => [item.id, item]));
+		};
+		this.property = new Map(data.property.map((item) => [item.id, item]));
 	};
 
 	processPrisonEscape(escapeType) {

@@ -1,5 +1,6 @@
-import React, {useState, useMemo, useCallback} from 'react';
+import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import SelectTradePartner from './SelectTradePartner/SelectTradePartner';
 import TradeItemBox from './TradeItemBox/TradeItemBox';
 import Dialog from '@material-ui/core/Dialog';
@@ -60,6 +61,15 @@ const TradeDialog = (props) => {
 			</Box>
 		</Dialog>
 	);
+};
+
+TradeDialog.propTypes = {
+	isOpen: PropTypes.bool,
+	tradePartner: PropTypes.string,
+	onDialogOpen: PropTypes.func.isRequired,
+	onItemChange: PropTypes.func.isRequired,
+	onPartnerChange: PropTypes.func.isRequired,
+	onOfferTrade: PropTypes.func.isRequired,
 };
 
 export default TradeDialog;

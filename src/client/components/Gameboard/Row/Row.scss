@@ -1,40 +1,8 @@
-.cell {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-    width: 54px;
-    height: 88px;
-    
-    &:first-child, &:last-child {
-        width: 88px;
-        height: 88px;
-    };
-
-    .cellHeader {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50px;
-        height: 18px;
-        
-        img {
-            width: 12px;
-            height: 12px;
-        };
-    };
-
-    .cellBody {
-        width: 50px;
-        height: 67px;
-    };
-};
-
 .topRow {
     display: flex;
 
-    .cell {
-        .cellHeader {
+    & > div {
+        & > div:first-child {
             order: 1;
 
             img {
@@ -42,15 +10,20 @@
             };
         };
     };
+
+    & > div:first-child, & > div:last-child {
+        width: 88px;
+        height: 88px;
+    };
 };
 
 .rightRow {
-    .cell {
+    & > div {
         flex-flow: row;
         width: 88px;
         height: 54px;
 
-        .cellHeader {
+        & > div:first-child {
             flex-flow: column;
             width: 18px;
             height: 50px;
@@ -60,7 +33,7 @@
             };
         };
 
-        .cellBody {
+        & > div:last-child {
             width: 67px;
             height: 50px;
         };
@@ -70,18 +43,23 @@
 .bottomRow {
     display: flex;
     flex-flow: row-reverse;
+
+    & > div:first-child, & > div:last-child {
+        width: 88px;
+        height: 88px;
+    };
 };
 
 .leftRow {
     display: flex;
     flex-flow: column-reverse;
     
-    .cell {
+    & > div {
         flex-flow: row;
         width: 88px;
         height: 54px;
 
-        .cellHeader {
+        & > div:first-child {
             flex-flow: column;
             order: 1;
             width: 18px;
@@ -92,7 +70,7 @@
             };
         };
 
-        .cellBody {
+        & > div:last-child {
             width: 67px;
             height: 50px;
         };

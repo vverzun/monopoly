@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import Box from '@material-ui/core/Box';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -31,5 +32,12 @@ const MoveChipDialog = ({isOpen, handleOpen, handleChange, handleMove}) => (
 		</Box>
 	</Dialog>
 );
+
+MoveChipDialog.propTypes = {
+	isOpen: PropTypes.bool,
+	handleOpen: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	handleMove: PropTypes.func.isRequired,
+};
 
 export default MoveChipDialog;

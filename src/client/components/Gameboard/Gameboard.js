@@ -1,33 +1,37 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import Row from './Row/Row';
 import Center from './Center/Center';
 import Paper from '@material-ui/core/Paper';
 import style from './Gameboard.scss';
-import gameboard from '../../../lib/mock/gameboardMock.mjs';
 
 const Gameboard = () => {
+	const gameboard = useSelector((state) => state.banker.gameboard);
 	const playersPositions = useSelector((state) => state.banker.playersPositions);
 	const playersBuildings = useSelector((state) => state.banker.playersBuildings);
-	const boardWithPlayers = JSON.parse(JSON.stringify(gameboard));
 
-	playersPositions.forEach((player) => (
-		boardWithPlayers[player.position].players.push(player)),
-	);
+	const memoBoard = useMemo(() => {
+		const updatedBoard = JSON.parse(JSON.stringify(gameboard));
+		playersPositions.forEach((player) => (
+			updatedBoard[player.position].players.push(player)),
+		);
 
-	playersBuildings.forEach((cell) => {
-		boardWithPlayers[cell.index][cell.building] = cell.amount;
-	});
+		playersBuildings.forEach((cell) => {
+			updatedBoard[cell.index][cell.building] = cell.amount;
+		});
+
+		return updatedBoard;
+	}, [playersPositions, playersBuildings]);
 
 	return (
 		<Paper className={style.container}>
-			<Row cells={boardWithPlayers.slice(20, 31)} type={'top'}/>
+			<Row cells={memoBoard.slice(20, 31)} type={'top'}/>
 			<div className={style.center}>
-				<Row cells={boardWithPlayers.slice(11, 20)} type={'left'}/>
+				<Row cells={memoBoard.slice(11, 20)} type={'left'}/>
 				<Center/>
-				<Row cells={boardWithPlayers.slice(31, 40)} type={'right'}/>
+				<Row cells={memoBoard.slice(31, 40)} type={'right'}/>
 			</div>
-			<Row cells={boardWithPlayers.slice(0, 11)} type={'bottom'}/>
+			<Row cells={memoBoard.slice(0, 11)} type={'bottom'}/>
 		</Paper>
 	);
 };

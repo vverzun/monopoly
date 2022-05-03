@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import Card from '../../../../Banker/Card/Card';
 import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
@@ -33,4 +34,8 @@ const PropertyDialog = ({isOpen, handleOpen}) => {
 	);
 };
 
+PropertyDialog.propTypes = {
+	isOpen: PropTypes.bool,
+	handleOpen: PropTypes.func.isRequired,
+};
 export default PropertyDialog;

@@ -13,7 +13,9 @@ const applyTrade = (partner, banker) => {
 };
 
 const itemsToProperty = (items) => (
-	Object.entries(items).map((item) => gameboard.find((cell) => cell.title === item[0]))
+	Object.entries(items).map((item) => (
+		gameboard.find((cell) => cell.title === item[0])
+	))
 );
 
 const imitateTrade = (offer, from, to, player, partner) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Leaderboard from './Leaderboard/Leaderboard';
 import ReadyCheck from './ReadyCheck/ReadyCheck';
 import History from './History/History';
@@ -12,5 +13,10 @@ const InfoPanel = ({start, logged}) => (
 		{logged && <History/>}
 	</Box>
 );
+
+InfoPanel.propTypes = {
+	start: PropTypes.bool,
+	logged: PropTypes.bool,
+};
 
 export default InfoPanel;

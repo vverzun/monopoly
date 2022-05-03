@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -29,12 +30,18 @@ const PrisonDialog = ({isOpen, handleOpen, handleEscape}) => {
 						onClick={handleEscape}
 						value='free'
 						variant='contained'
-						disabled={!freePrisonEscape}>Use 'Free escape' card
+						disabled={!freePrisonEscape}>Use Free escape card
 					</Button>
 				</DialogContent>
 			</Box>
 		</Dialog>
 	);
+};
+
+PrisonDialog.propTypes = {
+	isOpen: PropTypes.bool,
+	handleOpen: PropTypes.func.isRequired,
+	handleEscape: PropTypes.func.isRequired,
 };
 
 export default PrisonDialog;

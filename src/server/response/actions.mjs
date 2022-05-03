@@ -24,7 +24,7 @@ const actions = {
 	// auction
 	SET_UP_AUCTION: 'setUpAuction',
 	APPLY_BID: 'applyBid',
-	CHANGE_CONNECTION_STATUS: 'changeConnectionStatus'
+	CHANGE_CONNECTION_STATUS: 'changeConnectionStatus',
 };
 
 export default actions;

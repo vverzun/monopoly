@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
@@ -51,6 +52,15 @@ const TradeItemBox = (props) => {
 			/>
 		</Box>
 	);
+};
+
+TradeItemBox.propTypes = {
+	type: PropTypes.string,
+	money: PropTypes.number,
+	captionText: PropTypes.string,
+	tradeItems: PropTypes.arrayOf(PropTypes.object),
+	onItemSelect: PropTypes.func.isRequired,
+	onMoneyChange: PropTypes.func.isRequired,
 };
 
 export default TradeItemBox;

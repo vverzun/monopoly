@@ -14,24 +14,24 @@ import initWebsocket from '../../utils/initWebsocket';
 export const ws = new ReconnectingWebSocket('ws://localhost:3030');
 
 const App = () => {
-	const isConnection = useSelector(state => state.banker.isConnection);
-	const playersCount = useSelector(state => state.banker.playersCount);
-	const clientsCount = useSelector(state => state.banker.clientsCount);
-	const isGameStarted = useSelector(state => state.banker.isGameStarted);
+	const isConnection = useSelector((state) => state.banker.isConnection);
+	const playersCount = useSelector((state) => state.banker.playersCount);
+	const clientsCount = useSelector((state) => state.banker.clientsCount);
+	const isGameStarted = useSelector((state) => state.banker.isGameStarted);
 	const shouldSpinnerRender = (isGameStarted && (playersCount !== clientsCount)) || !isConnection;
-	
+
 	useEffect(() => {
 		initWebsocket();
 
 		return () => {
-			ws.close(); //disconnect
+			ws.close(); // disconnect
 		};
 	}, []);
 
 	return (
 		<Box className={style.container}>
 			<img className={style.logo} src={monopolyLogo} alt='monopoly logo'/>
-			{shouldSpinnerRender && 
+			{shouldSpinnerRender &&
 				<ConnectionSpinner
 					playersCount={playersCount}
 					clientsCount={clientsCount}
@@ -49,7 +49,7 @@ const App = () => {
 					<ErrorAlert/>
 				</>
 			}
-			
+
 		</Box>
 	);
 };

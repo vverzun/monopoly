@@ -13,7 +13,7 @@ export const newPlayerJoin = (name) => {
 };
 
 export const connect = (state) => {
-	request(events.CONNECT, 'state', state);	
+	request(events.CONNECT, 'state', state);
 };
 
 export const ready = () => {
