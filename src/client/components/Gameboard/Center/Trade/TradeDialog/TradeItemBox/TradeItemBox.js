@@ -59,8 +59,8 @@ TradeItemBox.propTypes = {
 	money: PropTypes.number,
 	captionText: PropTypes.string,
 	tradeItems: PropTypes.arrayOf(PropTypes.object),
-	onItemSelect: PropTypes.func.isRequired,
-	onMoneyChange: PropTypes.func.isRequired,
+	onItemSelect: PropTypes.func,
+	onMoneyChange: PropTypes.func,
 };
 
 export default TradeItemBox;

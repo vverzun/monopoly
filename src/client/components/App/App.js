@@ -24,7 +24,7 @@ const App = () => {
 		initWebsocket();
 
 		return () => {
-			ws.close(); // disconnect
+			ws.close();
 		};
 	}, []);
 
@@ -44,7 +44,7 @@ const App = () => {
 					<Box className={style.interface}>
 						<Gameboard/>
 						<Banker/>
-						<button onClick={() => localStorage.clear()}>Clear</button>
+						{/* <button onClick={() => localStorage.clear()}>Clear</button> */}
 					</Box>
 					<ErrorAlert/>
 				</>

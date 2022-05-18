@@ -32,7 +32,7 @@ const Row = ({cells, type}) => {
 
 Row.propTypes = {
 	cells: PropTypes.arrayOf(PropTypes.object).isRequired,
-	type: PropeTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
 };
 
 export default Row;

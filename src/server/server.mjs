@@ -15,7 +15,7 @@ export const wss = new WebSocket.Server({server});
 	const gameData = await getGameData('game');
 	const logger = Logger.create();
 	const banker = Banker.create(logger);
-	// await delGameData('game');
+	await delGameData('game');
 	if (gameData) {
 		console.log('GameData found, continuing game...');
 		banker.restoreGameData(JSON.parse(gameData));

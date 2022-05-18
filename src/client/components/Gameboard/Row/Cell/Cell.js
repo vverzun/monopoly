@@ -29,8 +29,8 @@ const Cell = ({players, house, hotel}) => {
 
 Cell.propTypes = {
 	players: PropTypes.arrayOf(PropTypes.object),
-	house: PropTypes.number.isRequired,
-	hotel: PropTypes.number.isRequired,
+	house: PropTypes.number,
+	hotel: PropTypes.number,
 };
 
 export default Cell;

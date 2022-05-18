@@ -30,8 +30,8 @@ const Buildings = ({house, hotel}) => {
 };
 
 Buildings.propTypes = {
-	house: PropTypes.number.isRequired,
-	hotel: PropTypes.number.isRequired,
+	house: PropTypes.number,
+	hotel: PropTypes.number,
 };
 
 export default Buildings;

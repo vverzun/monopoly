@@ -1,3 +1,8 @@
 .prisonButton {
-    composes: centerButton from global;
+    width: 100px;
+    font-size: 10px;
+    
+    & > span {
+        font-size: 1rem;
+    };
 };
