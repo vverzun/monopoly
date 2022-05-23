@@ -29,7 +29,7 @@ class Auction {
 	};
 
 	end(banker) {
-		this.winner.buyProperty(this.lot, this.highestBid);
+		this.winner.buyProperty(this.lot, this.highestBid, this.members);
 		this.winner.changeStatus('isAuction', false);
 		this.logger.log(`Auction ended. The winner is ${this.winner.name}!`);
 
